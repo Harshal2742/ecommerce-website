@@ -1,0 +1,21 @@
+.items{
+    width: 500px;
+    height: 500px;
+    overflow: auto;
+    margin: auto;
+}
+
+
+.items::-webkit-scrollbar{
+    width: 0.7rem;
+}
+
+.items::-webkit-scrollbar-track{
+    background-color:transparent;
+}
+
+.items::-webkit-scrollbar-thumb{
+    background-color: rgb(135, 135, 135);
+    border: 1px solid rgb(57, 57, 57);
+    border-radius: 100vw;
+}

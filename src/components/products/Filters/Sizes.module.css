@@ -1,0 +1,42 @@
+*{
+    box-sizing: border-box;
+}
+
+.main{
+    margin: 10px;
+    width: 100px;
+}
+
+.title{
+    font-weight: 500;
+}
+
+.sizeContainer{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+}
+
+.size{
+    font-size: small;
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: 1px solid white;
+    text-align: center;
+    background-color: rgba(192, 192, 192, 0.658);
+    margin: 10px;
+    padding-top:7px ;
+}
+
+.size:hover{
+    cursor: pointer;
+    border: 1px solid black;
+}
+
+.change{
+    background-color: black;
+    color: white;
+    border: 1px solid black;
+}
+

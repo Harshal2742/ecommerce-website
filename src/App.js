@@ -1,25 +1,42 @@
-import logo from './logo.svg';
 import './App.css';
 
+// import { Fragment } from "react";
+import { Provider } from 'react-redux';
+import store from './store/store';
+import { Navigate, Route, Routes } from 'react-router-dom';
+import Home from './pages/Home';
+import LoginPage from './pages/LoginPage';
+import LoadingSpinner from './components/layout/LoadingSpinner';
+import { useSelector } from 'react-redux';
+import SignupPage from './pages/SignupPage';
+import { useEffect } from 'react';
+import { userActions } from './store/user-slice';
+import { useDispatch } from 'react-redux';
+
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const isLoading = useSelector((state) => state.spinner.isLoading);
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		const loginInformation = localStorage.getItem('isLoggedIn');
+
+		if (loginInformation && loginInformation === '1') {
+			dispatch(userActions.setIsLoggedIn(true));
+		}
+	}, [dispatch]);
+
+	return (
+		<Provider store={store}>
+			{isLoading && <LoadingSpinner />}
+			<Routes>
+				<Route path="/" element={<Navigate replace to={'/home'} />} />
+				<Route path="/home/*" element={<Home />} />
+				<Route path="/login" element={<LoginPage />} />
+				<Route path="/signup" element={<SignupPage />} />
+				<Route path="/home/*" element={<h1>Page Not Found</h1>} />
+			</Routes>
+		</Provider>
+	);
 }
 
 export default App;

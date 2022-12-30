@@ -1,0 +1,21 @@
+.count{
+    font-weight: bold;
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+.btn{
+    width: 100px;
+    height: 30px;
+    border-radius: 15px;
+    transition: all 0.2s;
+}
+
+.cartIcon{
+    font-size: large;
+}
+
+.btn:hover{
+    transform: scale(1.05);
+    cursor: pointer;
+}

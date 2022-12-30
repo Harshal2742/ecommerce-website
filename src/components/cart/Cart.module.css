@@ -1,0 +1,60 @@
+.cart{
+    
+    background: rgb(44, 44, 44);
+    width: 850px;
+    height: 610px;
+    /* margin: 400px; */
+    z-index: 10;
+
+    /* for positioning cart div to centre and fixed */
+    position:fixed;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 15px;
+    text-align: center;
+    color: white;
+}
+
+.head{
+    display: flex;
+    justify-content: space-between;
+}
+.head h3{
+    margin: 10px 20px;
+}
+
+.no-items{
+    color: rgb(104, 103, 103);
+}
+
+.close-button{
+    text-align: end;
+}
+
+.close-button button{
+    text-align: center;
+    display: inline-block;
+    margin: 10px;
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    font-size: 20px;
+    font-weight: bolder;
+    background-color: rgb(44,44,44);
+    border:none;
+    color: rgb(167, 158, 158);
+    padding: 0px;
+}
+
+.close-button button:hover{
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+}
+
+.body{
+    padding: 10px;
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
