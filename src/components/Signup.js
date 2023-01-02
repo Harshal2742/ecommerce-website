@@ -10,6 +10,10 @@ const Signup = () => {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 
+	const onWheelHandler = (event) => {
+		event.target.blur();
+	};
+
 	const submitHandler = (event) => {
 		event.preventDefault();
 
@@ -47,23 +51,16 @@ const Signup = () => {
 			return;
 		}
 
-    if(password.length < 8){
-      setMessage('Password is too short!');
-      return;
-    }
-		else if (password !== confirmPassword) {
+		if (password.length < 8) {
+			setMessage('Password is too short!');
+			return;
+		} else if (password !== confirmPassword) {
 			setMessage('Confirmed password is not same. Please confirm again!');
 			return;
 		}
 
 		setMessage('');
-		event.target[0].value = '';
-		event.target[1].value = '';
-		event.target[2].value = '';
-		event.target[3].value = '';
-		event.target[4].value = '';
-		event.target[5].value = '';
-		event.target[6].value = '';
+		event.target.reset();
 
 		dispatch(spinnerActions.setIsLoading());
 		dispatch(userActions.loginHandler());
@@ -98,7 +95,14 @@ const Signup = () => {
 				</div>
 				<div>
 					<label htmlFor="mobile">Phone</label>
-					<input type="number" id="mobile" required />
+					<input
+						type="number"
+						id="mobile"
+						required
+						onWheel={onWheelHandler}
+						maxLength="10"
+						minLength="10"
+					/>
 				</div>
 				<div>
 					<label htmlFor="password">Paaword</label>

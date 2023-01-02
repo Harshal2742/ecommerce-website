@@ -1,0 +1,44 @@
+.DeleteAccount{
+  margin: 1rem;
+}
+
+.DeleteAccount__ButtonDiv{
+  text-align: right;
+}
+
+
+.DeleteAccount__Button{
+  /* text-align:left; */
+  position: relative;
+  right: 10px;
+  width: 100px;
+  height: 2rem;
+  border-radius: 1rem;
+  background-color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  border: 2px solid black;
+}
+
+.DeleteAccount__Button:hover{
+  cursor:pointer;
+  color: rgb(190, 190, 190);
+}
+
+.DeleteAccount__Lable{
+  display: block;
+  width: 25rem;
+  text-align: justify;
+  color: red;
+}
+
+.DeleteAccount__Input{
+  margin: 10px 0px;
+  height: 2.5rem;
+  font-size: 1rem;
+  width: 25rem;
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+  background-color: rgb(255, 255, 255);
+  border: 2px solid rgb(200, 200, 200);
+}

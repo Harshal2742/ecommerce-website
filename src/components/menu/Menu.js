@@ -24,7 +24,7 @@ const Menu = () => {
 		wrapperClasses = `${styles.wrapper}`;
 	}
 
-	const menuColseHandler = () => {
+	const menuCloseHandler = () => {
 		dispatch(uiActions.toggleShowMenu());
 	};
 
@@ -35,7 +35,7 @@ const Menu = () => {
 	};
 	return (
 		<div className={wrapperClasses}>
-			<button className={styles['close-button']} onClick={menuColseHandler}>
+			<button className={styles['close-button']} onClick={menuCloseHandler}>
 				X
 			</button>
 			<div>
@@ -49,25 +49,25 @@ const Menu = () => {
 				</div>
 				<ul className={styles.menu}>
 					<li>
-						<Link to="/my-orders" className={styles.menu__link}>
+						<Link to="/my-orders" className={styles.menu__link} onClick={menuCloseHandler}>
 							<FontAwesomeIcon icon={faBagShopping} />
 							<span>My Orders</span>
 						</Link>
 					</li>
 					<li>
-						<Link to="/my-coupons" className={styles.menu__link}>
+						<Link to="/my-coupons" className={styles.menu__link} onClick={menuCloseHandler}>
 							<FontAwesomeIcon icon={faTicketSimple} />
 							<span>Coupons</span>
 						</Link>
 					</li>
 					<li>
-						<Link to="/my-review" className={styles.menu__link}>
+						<Link to="/my-review" className={styles.menu__link} onClick={menuCloseHandler}>
 							<FontAwesomeIcon icon={faStar} />
 							<span>My Review</span>
 						</Link>
 					</li>
 					<li>
-						<Link to="/home/my-profile" className={styles.menu__link}>
+						<Link to="/home/my-profile" className={styles.menu__link} onClick={menuCloseHandler}>
 							<FontAwesomeIcon icon={faUserEdit} />
 							<span>Edit Profile</span>
 						</Link>

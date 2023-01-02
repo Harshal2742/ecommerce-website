@@ -11,12 +11,12 @@ const Home = () => {
 	return (
 		<Fragment>
 			<Navbar />
-			<div className={styles.main}>
+			<main className={styles.Main}>
 				<Routes>
 					<Route path="/" element={<Products />} />
 					{isLoggedIn && <Route path="/my-profile" element={<Profile />} />}
 				</Routes>
-			</div>
+			</main>
 		</Fragment>
 	);
 };
