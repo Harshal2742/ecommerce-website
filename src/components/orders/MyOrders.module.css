@@ -1,0 +1,17 @@
+.MyOrders{
+  width: 100%;
+  z-index: 1;
+}
+
+.MyOrders__Filters{
+  margin: 1rem 0rem;
+}
+
+.MyOrders__Items{
+  /* height: 78vh; */
+  border-radius: 0.4rem;
+  box-shadow: 0px 0px 5px 1px rgb(127, 127, 127);
+  padding: 0.3rem 0.1rem;
+  margin: 1rem 0rem;
+}
+

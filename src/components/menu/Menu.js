@@ -49,7 +49,7 @@ const Menu = () => {
 				</div>
 				<ul className={styles.menu}>
 					<li>
-						<Link to="/my-orders" className={styles.menu__link} onClick={menuCloseHandler}>
+						<Link to="/home/my-orders" className={styles.menu__link} onClick={menuCloseHandler}>
 							<FontAwesomeIcon icon={faBagShopping} />
 							<span>My Orders</span>
 						</Link>

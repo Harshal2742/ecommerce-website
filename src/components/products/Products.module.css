@@ -5,11 +5,14 @@
 .products{
     flex-grow: 6;
     position: relative;
+    margin-left: 1rem;
 }
 
 .items{
     display: grid;
     grid-template-columns: auto auto auto auto;
+    gap: 2rem 2rem;
     text-align: center;
+    margin: 1rem 0rem;
 }
 

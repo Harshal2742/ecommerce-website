@@ -1,7 +1,7 @@
 .cart{
     
-    background: rgb(44, 44, 44);
-    width: 850px;
+    background: rgb(255, 255, 255);
+    width: 900px;
     height: 610px;
     /* margin: 400px; */
     z-index: 10;
@@ -13,7 +13,7 @@
     transform: translate(-50%,-50%);
     border-radius: 15px;
     text-align: center;
-    color: white;
+    color: rgb(0, 0, 0);
 }
 
 .head{
@@ -41,14 +41,14 @@
     border-radius: 50%;
     font-size: 20px;
     font-weight: bolder;
-    background-color: rgb(44,44,44);
+    background-color: rgb(255, 255, 255);
     border:none;
     color: rgb(167, 158, 158);
     padding: 0px;
 }
 
 .close-button button:hover{
-    color: rgb(255, 255, 255);
+    color: rgb(86, 86, 86);
     cursor: pointer;
 }
 

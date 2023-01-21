@@ -1,7 +1,14 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
+import Button from '../UI/Button';
+import LabelInput from '../UI/LabelInput';
 import styles from './ProfileInformation.module.css';
 
 const ProfileInformation = () => {
+	const firstNameInputRef = useRef();
+	const lastNameInputRef = useRef();
+	const emailInputRef = useRef();
+	const phoneInputRef = useRef();
+	const birthInputRef = useRef();
 	const [isInputDisabled, setIsInputDisabled] = useState(true);
 	const user = {
 		firstName: 'Harshal',
@@ -33,12 +40,7 @@ const ProfileInformation = () => {
 	return (
 		<form className={styles.ProfileInformation}>
 			<div className={styles.ProfileInformation__ButtonDiv}>
-				<button
-					className={styles.ProfileInformation__Button}
-					onClick={editSaveHandler}
-				>
-					Edit
-				</button>
+				<Button clickHandler={editSaveHandler}>Edit</Button>
 			</div>
 			<div>
 				<img
@@ -58,62 +60,43 @@ const ProfileInformation = () => {
 				</label>
 			</div>
 			<div className={styles.ProfileInformation__name}>
-				<div>
-					<label className={styles.ProfileInformation_Label} htmlFor="name">
-						First Name
-					</label>
-					<input
-						type="text"
-						defaultValue={user.firstName}
-						disabled={isInputDisabled}
-					/>
-				</div>
-				<div>
-					<label className={styles.ProfileInformation_Label} htmlFor="lname">
-						Last Name
-					</label>
-					<input
-						type="text"
-						id="lname"
-						defaultValue={user.lastName}
-						disabled={isInputDisabled}
-					/>
-				</div>
-			</div>
-			<div>
-				<label className={styles.ProfileInformation_Label} htmlFor="email">
-					E-mail
-				</label>
-				<input
-					type="email"
-					defaultValue={user.email}
-					id="email"
-					disabled={isInputDisabled}
+				<LabelInput
+					label={'First Name'}
+					inputRef={firstNameInputRef}
+					inputType={'text'}
+					defaultValue={user.firstName}
+					inputDisabled={isInputDisabled}
+				/>
+				<LabelInput
+					label={'Last Name'}
+					inputRef={lastNameInputRef}
+					inputType={'text'}
+					defaultValue={user.lastName}
+					inputDisabled={isInputDisabled}
 				/>
 			</div>
-			<div>
-				<label className={styles.ProfileInformation_Label} htmlFor="dob">
-					Date of Birth
-				</label>
-				<input
-					type="date"
-					defaultValue={user.dateOfBirth}
-					id="email"
-					disabled={isInputDisabled}
-				/>
-			</div>
-			<div>
-				<label className={styles.ProfileInformation_Label} htmlFor="phone">
-					Phone
-				</label>
-				<input
-					type="number"
-					defaultValue={user.phone}
-					id="phone"
-					disabled={isInputDisabled}
-					onWheel={onWheelHandler}
-				/>
-			</div>
+			<LabelInput
+				label={'E-mail'}
+				inputRef={emailInputRef}
+				inputType={'email'}
+				defaultValue={user.email}
+				inputDisabled={isInputDisabled}
+			/>
+			<LabelInput
+				label={'Date of Birth'}
+				inputRef={birthInputRef}
+				inputType={'date'}
+				defaultValue={user.dateOfBirth}
+				inputDisabled={isInputDisabled}
+			/>
+			<LabelInput
+				label={'Phone'}
+				inputRef={phoneInputRef}
+				inputType={'number'}
+				defaultValue={user.phone}
+				inputDisabled={isInputDisabled}
+				onWheelHandler={onWheelHandler}
+			/>
 		</form>
 	);
 };

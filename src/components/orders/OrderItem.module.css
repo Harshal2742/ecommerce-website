@@ -1,0 +1,32 @@
+.Item{
+  display: flex;
+  height: 9rem;
+  padding: 1rem 5rem;
+  margin: 1rem 0rem;
+  box-shadow: 0px 0px 5px 3px rgb(190, 190, 190);
+}
+
+.Item{
+  cursor: pointer;
+}
+
+.Item__element{
+  flex-grow: 1;
+}
+
+.Item__Image{
+  width: 5rem;
+  height: 6rem;
+}
+
+.Item__Title{
+ margin: 0rem 2rem;
+}
+
+.Item__Date{
+  text-align: center;
+}
+
+.Item__element > p{
+  margin: 2%;
+}

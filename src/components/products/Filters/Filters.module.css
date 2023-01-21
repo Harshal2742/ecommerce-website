@@ -1,4 +1,6 @@
 .filter{
-    flex-basis: 300px;
+    flex-basis: 16rem;
     position: relative;
+    border-right: 2px solid rgb(198, 198, 198);
+    margin: 0rem 1rem;
 }

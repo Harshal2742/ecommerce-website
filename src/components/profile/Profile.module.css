@@ -8,7 +8,7 @@
   width: 100%;
   height: 85vh;
   box-shadow: 0px 0px 5px 1px rgb(127, 127, 127);
-  border-radius: 1rem;
+  border-radius: 0.4rem;
 }
 
 .Profile__Options{
@@ -45,8 +45,8 @@
 .Information{
   box-shadow: 0px 0px 5px 1px rgb(192, 192, 192);
   overflow-y: auto;
-  border-top-right-radius: 1rem;
-  border-bottom-right-radius: 1rem;
+  border-top-right-radius: 0.4rem;
+  border-bottom-right-radius: 0.4rem;
 }
 
 .Information::-webkit-scrollbar{

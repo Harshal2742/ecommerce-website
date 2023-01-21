@@ -1,31 +1,48 @@
+import { useRef } from 'react';
+import Button from '../UI/Button';
+import LabelInput from '../UI/LabelInput';
 import styles from './ChangePassword.module.css';
 
 const ChangePassword = () => {
+	const currPassRef = useRef();
+	const newPassRef = useRef();
+	const confPassRef = useRef();
 
-  const passwordChangeHandler = (event) => {
-    event.preventDefault();
-    event.target.reset();
+	const passwordChangeHandler = (event) => {
+		event.preventDefault();
+		// send http request
+		console.log(currPassRef.current.value);
+		console.log(newPassRef.current.value);
+		console.log(confPassRef.current.value);
+		
+		event.target.reset();
 
-    // send http request
-  }
+	};
 
 	return (
 		<form className={styles.ChangePassword} onSubmit={passwordChangeHandler}>
 			<div className={styles.ChangePassword__ButtonDiv}>
-				<button type='submit' className={styles.ChangePassword__Button}>Save</button>
+				<Button>Save</Button>
 			</div>
-			<div>
-				<label htmlFor="currentPassword">Enter current password</label>
-				<input type="password" id="currentPassword" required />
-			</div>
-			<div>
-				<label htmlFor="newPassword">Enter new password</label>
-				<input type="password" id="newPassword" required />
-			</div>
-			<div>
-				<label htmlFor="confirmPassword">Confirm new password</label>
-				<input type="password" id="confirmPassword" required />
-			</div>
+
+			<LabelInput
+				label={'Enter current password'}
+				inputRef={currPassRef}
+				inputType={'password'}
+				required={true}
+			/>
+			<LabelInput
+				label={'Enter new password'}
+				inputRef={newPassRef}
+				inputType={'password'}
+				required={true}
+			/>
+			<LabelInput
+				label={'Confirm new password'}
+				inputRef={confPassRef}
+				inputType={'password'}
+				required={true}
+			/>
 		</form>
 	);
 };

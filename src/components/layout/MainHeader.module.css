@@ -28,6 +28,10 @@
     margin-top: 1rem;
 }
 
+.name:hover{
+    cursor: pointer;
+}
+
 .btn{
     width: 7rem;
     height: 2rem;

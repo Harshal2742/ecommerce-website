@@ -29,11 +29,11 @@ function App() {
 		<Provider store={store}>
 			{isLoading && <LoadingSpinner />}
 			<Routes>
-				<Route path="/" element={<Navigate replace to={'/home'} />} />
+				<Route path='/' element={<Navigate to='/home' replace />} />
 				<Route path="/home/*" element={<Home />} />
 				<Route path="/login" element={<LoginPage />} />
 				<Route path="/signup" element={<SignupPage />} />
-				<Route path="/home/*" element={<h1>Page Not Found</h1>} />
+				<Route path='/*' element={<p>Page not found.</p>} />
 			</Routes>
 		</Provider>
 	);
