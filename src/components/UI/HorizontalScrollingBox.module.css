@@ -1,0 +1,14 @@
+.box{
+  display: flex;
+  overflow-x: auto;
+  gap:1rem;
+  padding: 2rem 0.2rem;
+}
+
+.box:active{
+  cursor: -webkit-grabbing;
+}
+.box::-webkit-scrollbar{
+  display: none;
+}
+

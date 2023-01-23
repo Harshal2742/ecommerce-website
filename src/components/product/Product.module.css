@@ -1,0 +1,31 @@
+.Product{
+  margin: 2rem;
+}
+
+.Product__ImagesAndDetails{
+  width: 100%;
+  display: flex;
+  
+}
+
+.Product__Images{
+  /* border: 2px solid rgb(0, 0, 0); */
+  flex-grow: 3;
+  align-self: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+.Product__Details{
+  flex-grow: 2;
+  flex-basis: 25%;
+}
+
+.Product__RatingAndReviews{
+  box-shadow: 0rem 0rem 1rem rgb(200, 200, 200);
+  padding: 1rem;
+}
+
+.Product__RatingAndReviews_Title{
+  font-size: 1.4rem;
+}

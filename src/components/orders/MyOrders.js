@@ -52,11 +52,12 @@ const item = {
 
 const MyOrders = () => {
 	return (
-		<div className={styles.MyOrders}>
+		<section className={styles.MyOrders}>
+			<h2>My Orders</h2>
 			<div className={styles.MyOrders__Filters}>
 				<FilterSort />
 			</div>
-			<div className={styles.MyOrders__Items}>
+			<div>
 				<OrderItem item={item} />
 				<OrderItem item={item} />
 				<OrderItem item={item} />
@@ -68,7 +69,7 @@ const MyOrders = () => {
 				<OrderItem item={item} />
 				<OrderItem item={item} />
 			</div>
-		</div>
+		</section>
 	);
 };
 

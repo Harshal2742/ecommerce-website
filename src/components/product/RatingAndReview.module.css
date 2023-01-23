@@ -1,0 +1,54 @@
+.Contianer{
+  background-color: rgb(255, 255, 255);
+  width: 18rem;
+  height: 20rem;
+  flex-shrink: 0;
+  box-shadow: 0px 0px 5px rgb(163, 163, 163);
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+.ImageNameWrapper{
+  display: flex;
+}
+
+.ImageWrapper{
+  width: 4rem;
+  height: 4rem;
+}
+
+.User__Image{
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  border: 2px solid rgb(255, 255, 255);
+}
+
+.User__Name{
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.User__Review{
+  text-align: justify;
+  height: 11.5rem;
+  overflow: auto;
+  margin: 0.5rem 0rem;
+}
+
+.User__Review::-webkit-scrollbar{
+  width: 0.5rem;
+}
+
+.User__Review::-webkit-scrollbar-track:hover{
+  background-color: transparent;
+}
+
+.User__Review:hover::-webkit-scrollbar-thumb{
+  background-color: rgb(224, 221, 221);
+  border-radius: 1rem;
+}
+
+.User__RatingAndReview_Date{
+  text-align: right;
+}

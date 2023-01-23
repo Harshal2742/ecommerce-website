@@ -9,7 +9,7 @@
 }
 
 .item:hover{
-    box-shadow: 0 0 1rem rgb(183, 183, 183);
+    box-shadow: 0rem 0rem 1rem rgb(220, 220, 220);
 }
 
 .item__ImagePriceDiv:hover{

@@ -1,0 +1,16 @@
+.ListWrapper{
+  margin: 2rem 0rem;
+}
+
+.List__Title{
+  color: rgb(95, 95, 95);
+  margin: 0.5rem 0rem;
+  font-weight: bold;
+}
+
+.List{
+  display: flex;
+  list-style: none;
+  gap:1rem;
+}
+

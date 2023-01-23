@@ -17,7 +17,7 @@ const Item = (props) => {
 	return (
 		<div className={styles.item}>
 			<div className={styles.item__ImagePriceDiv} onClick={() => navigate(`/home/products/${props.item.id}`)}>
-				<img src={props.item.image} alt={props.item.title} id="example" />
+				<img src={`${process.env.PUBLIC_URL}/img/products/${props.item.image}.jpg`} alt={props.item.title} id="example" />
 				<div className={styles.title}>{props.item.title}</div>
 				<div>
 					<FontAwesomeIcon icon={faIndianRupee} />{' '}

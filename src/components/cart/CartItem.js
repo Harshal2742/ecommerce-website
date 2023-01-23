@@ -23,7 +23,7 @@ const CartItem = (props) => {
     <div className={styles.main}>
       <div>
         <img
-          src={props.item.image}
+          src={`${process.env.PUBLIC_URL}/img/products/${props.item.image}.jpg`}
           alt="cart item"
           className={styles['product-image']}
         />

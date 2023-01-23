@@ -1,12 +1,7 @@
-.MyOrders{
-  width: 100%;
-  z-index: 1;
+
+.RatingsAndReview{
+  min-height: 85vh;
   box-shadow: 0rem 0rem 1rem rgb(190, 190, 190);
   padding: 1rem;
   margin-bottom: 2rem;
 }
-
-.MyOrders__Filters{
-  margin: 1rem 0rem;
-}
-

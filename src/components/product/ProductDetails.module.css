@@ -1,0 +1,137 @@
+
+.Details__Company{
+  color: rgb(141, 141, 141);
+  font-weight: bold;
+  margin-bottom: 0.2rem;
+}
+
+.Details__Title{
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.Details__PriceIconWrapper{
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin: 2rem 0rem;
+  color: rgb(69, 69, 69);
+}
+
+.Details__AvgRating{
+  display: inline-block;
+  font-weight: bold;
+  background-color: black;
+  color: white;
+  width: 4rem;
+  text-align: center;
+  height: 1.3rem;
+  border-radius: 0.2rem;
+}
+
+.Details__AvgRating span{
+  margin: 0rem 0.4rem;
+}
+
+.Details__RatingQuatity{
+  display: inline-block;
+  margin: 0rem 1rem;
+  color: rgb(109, 109, 109);
+  font-weight: 700;
+}
+
+.Colours__Color{
+  border: 2px solid rgb(130, 130, 130);
+  width: 60px;
+  text-align: center;
+  border-radius: 1rem;
+  height: 1.5rem;
+  color: rgb(132, 132, 132);
+}
+.Colours__Color:hover{
+  cursor: pointer;
+  background-color: rgb(255, 255, 255);
+  border: 2px solid rgb(0, 0, 0);
+  color: rgb(0, 0, 0);
+}
+
+.Colours__Color_Selected{
+  background-color: black;
+  border: 2px solid rgb(0, 0, 0);
+  color: white;
+}
+.Colours__Color_Selected:hover{
+  cursor: pointer;
+  background-color: black;
+  border: 2px solid rgb(0, 0, 0);
+  color: white;
+}
+
+.Sizes__Size{
+  border: 2px solid rgb(130, 130, 130);
+  width: 60px;
+  text-align: center;
+  height: 1.5rem;
+  color: rgb(132, 132, 132);
+}
+.Sizes__Size:hover{
+  cursor: pointer;
+  background-color: rgb(255, 255, 255);
+  border: 2px solid rgb(0, 0, 0);
+  color: rgb(0, 0, 0);
+}
+
+.Sizes__Size_Selected{
+  background-color: black;
+  border: 2px solid rgb(0, 0, 0);
+  color: white;
+}
+.Sizes__Size_Selected:hover{
+  cursor: pointer;
+  background-color: black;
+  border: 2px solid rgb(0, 0, 0);
+  color: white;
+}
+
+.Product__Description{
+  height: 5rem;
+}
+
+.Product__Description h4{
+  color: rgb(95, 95, 95);
+  margin: 0.5rem 0rem;
+}
+
+.Product__Description_Text{
+  text-align:justify ;
+  height: 8rem;
+  overflow: auto;
+}
+
+.Product__Description_Text::-webkit-scrollbar{
+  width: 0.7rem;
+}
+
+.Product__Description_Text::-webkit-scrollbar-track{
+  background-color:transparent;
+}
+
+.Product__Description_Text::-webkit-scrollbar-thumb{
+  background-color: rgb(206, 206, 206);
+  border: 1px solid rgb(204, 204, 204);
+  border-radius: 100vw;
+}
+
+
+.Button{
+  cursor: pointer;
+  width: 100%;
+  height: 40px;
+  background: #252525;
+  color: white;
+  margin: 1.5rem 0rem;
+}
+
+.Button:hover{
+  background-color: rgb(215, 214, 214);
+  color: rgb(0, 0, 0);
+}

@@ -61,9 +61,9 @@ const Menu = () => {
 						</Link>
 					</li>
 					<li>
-						<Link to="/my-review" className={styles.menu__link} onClick={menuCloseHandler}>
+						<Link to="/home/my-ratings-and-reviews" className={styles.menu__link} onClick={menuCloseHandler}>
 							<FontAwesomeIcon icon={faStar} />
-							<span>My Review</span>
+							<span>Ratings & Reviews</span>
 						</Link>
 					</li>
 					<li>

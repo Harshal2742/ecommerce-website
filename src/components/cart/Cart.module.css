@@ -4,7 +4,7 @@
     width: 900px;
     height: 610px;
     /* margin: 400px; */
-    z-index: 10;
+    z-index: 100;
 
     /* for positioning cart div to centre and fixed */
     position:fixed;

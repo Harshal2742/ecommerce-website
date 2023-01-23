@@ -5,8 +5,8 @@ const initialState = {
 	availableProducts: [
 		{
 			id: 'p1',
-			image: `${process.env.PUBLIC_URL + 'img/products/p1.jpg'}`,
-			images: ['image1', 'image2', 'image3', 'image4'],
+			image: 'p1',
+			images: ['p1-image1', 'p1-image2', 'p1-image3', 'p1-image4'],
 			title: 'Casual Shirt',
 			availableSizes: ['L', 'XL', 'XXL'],
 			availableColor: ['red', 'black', 'green'],
@@ -20,128 +20,128 @@ const initialState = {
 		},
 		{
 			id: 'p2',
-			image:
-				'https://rukminim1.flixcart.com/image/832/832/l0jwbrk0/t-shirt/t/n/1/-original-imagcapej87sqqkx.jpeg?q=70',
+			image: 'p1',
+			images: ['p1-image1', 'p1-image2', 'p1-image3', 'p1-image4'],
 			title: 'Black T-Shirt',
 			availableSizes: ['XS', 'S', 'M', 'ML', 'L'],
 			price: 400,
 		},
 		{
 			id: 'p3',
-			image:
-				'https://rukminim1.flixcart.com/image/832/832/l0jwbrk0/t-shirt/t/n/1/-original-imagcapej87sqqkx.jpeg?q=70',
+			image: 'p1',
+			images: ['p1-image1', 'p1-image2', 'p1-image3', 'p1-image4'],
 			title: 'Black T-Shirt',
 			availableSizes: ['XS', 'S', 'M', 'ML', 'L', 'XL', 'XXL'],
 			price: 400,
 		},
 		{
 			id: 'p4',
-			image:
-				'https://rukminim1.flixcart.com/image/832/832/l0jwbrk0/t-shirt/t/n/1/-original-imagcapej87sqqkx.jpeg?q=70',
+			image: 'p1-image3',
+			images: ['p1-image1', 'p1-image2', 'p1-image3', 'p1-image4'],
 			availableSizes: ['XS', 'L', 'XL', 'XXL'],
 			title: 'Black T-Shirt',
 			price: 400,
 		},
 		{
 			id: 'p5',
-			image:
-				'https://rukminim1.flixcart.com/image/832/832/l0jwbrk0/t-shirt/t/n/1/-original-imagcapej87sqqkx.jpeg?q=70',
+			image: 'p1',
+			images: ['p1-image1', 'p1-image2', 'p1-image3', 'p1-image4'],
 			availableSizes: ['XS', 'XXL'],
 			title: 'Black T-Shirt',
 			price: 400,
 		},
 		{
 			id: 'p6',
-			image:
-				'https://rukminim1.flixcart.com/image/832/832/l0jwbrk0/t-shirt/t/n/1/-original-imagcapej87sqqkx.jpeg?q=70',
+			image: 'p1',
+			images: ['p1-image1', 'p1-image2', 'p1-image3', 'p1-image4'],
 			availableSizes: ['XS', 'S', 'M', 'ML', 'L'],
 			title: 'Black T-Shirt',
 			price: 400,
 		},
 		{
 			id: 'p7',
-			image:
-				'https://rukminim1.flixcart.com/image/832/832/l0jwbrk0/t-shirt/t/n/1/-original-imagcapej87sqqkx.jpeg?q=70',
+			image: 'p1',
+			images: ['p1-image1', 'p1-image2', 'p1-image3', 'p1-image4'],
 			title: 'Black T-Shirt',
 			availableSizes: ['M', 'ML', 'L', 'XXL'],
 			price: 400,
 		},
 		{
 			id: 'p8',
-			image:
-				'https://rukminim1.flixcart.com/image/832/832/l0jwbrk0/t-shirt/t/n/1/-original-imagcapej87sqqkx.jpeg?q=70',
+			image: 'p1',
+			images: ['p1-image1', 'p1-image2', 'p1-image3', 'p1-image4'],
 			title: 'Black T-Shirt',
 			availableSizes: ['XS', 'S', 'M', 'ML', 'L', 'XL', 'XXL'],
 			price: 400,
 		},
 		{
 			id: 'p17',
-			image:
-				'https://rukminim1.flixcart.com/image/832/832/l0jwbrk0/t-shirt/t/n/1/-original-imagcapej87sqqkx.jpeg?q=70',
+			image: 'p1',
+			images: ['p1-image1', 'p1-image2', 'p1-image3', 'p1-image4'],
 			title: 'Black T-Shirt',
 			availableSizes: ['XS', 'S', 'M', 'ML', 'L', 'XL', 'XXL'],
 			price: 400,
 		},
 		{
 			id: 'p9',
-			image:
-				'https://rukminim1.flixcart.com/image/832/832/l0jwbrk0/t-shirt/t/n/1/-original-imagcapej87sqqkx.jpeg?q=70',
+			image: 'p1',
+			images: ['p1-image1', 'p1-image2', 'p1-image3', 'p1-image4'],
 			title: 'Black T-Shirt',
 			availableSizes: ['XS', 'S', 'M', 'ML', 'L', 'XL', 'XXL'],
 			price: 400,
 		},
 		{
 			id: 'p10',
-			image:
-				'https://rukminim1.flixcart.com/image/832/832/l0jwbrk0/t-shirt/t/n/1/-original-imagcapej87sqqkx.jpeg?q=70',
+			image: 'p1',
+			images: ['p1-image1', 'p1-image2', 'p1-image3', 'p1-image4'],
 			title: 'Black T-Shirt',
 			availableSizes: ['XS', 'S', 'M', 'ML', 'L', 'XL', 'XXL'],
 			price: 400,
 		},
 		{
 			id: 'p11',
-			image:
-				'https://rukminim1.flixcart.com/image/832/832/l0jwbrk0/t-shirt/t/n/1/-original-imagcapej87sqqkx.jpeg?q=70',
+			image: 'p1',
+			images: ['p1-image1', 'p1-image2', 'p1-image3', 'p1-image4'],
 			title: 'Black T-Shirt',
 			availableSizes: ['XS', 'S', 'M', 'ML', 'L', 'XXL'],
 			price: 400,
 		},
 		{
 			id: 'p12',
-			image:
-				'https://rukminim1.flixcart.com/image/832/832/l0jwbrk0/t-shirt/t/n/1/-original-imagcapej87sqqkx.jpeg?q=70',
+			image: 'p1',
+			images: ['p1-image1', 'p1-image2', 'p1-image3', 'p1-image4'],
 			title: 'Black T-Shirt',
 			availableSizes: ['XS', 'S', 'M', 'XXL'],
 			price: 400,
 		},
 		{
 			id: 'p13',
-			image:
-				'https://rukminim1.flixcart.com/image/832/832/l0jwbrk0/t-shirt/t/n/1/-original-imagcapej87sqqkx.jpeg?q=70',
+			image: 'p1',
+			images: ['p1-image1', 'p1-image2', 'p1-image3', 'p1-image4'],
 			title: 'Black T-Shirt',
 			availableSizes: ['XS', 'M', 'ML', 'L', 'XXL'],
 			price: 400,
 		},
 		{
 			id: 'p14',
-			image:
-				'https://rukminim1.flixcart.com/image/832/832/l0jwbrk0/t-shirt/t/n/1/-original-imagcapej87sqqkx.jpeg?q=70',
+			image: 'p1',
+			images: ['p1-image1', 'p1-image2', 'p1-image3', 'p1-image4'],
 			title: 'Black T-Shirt',
 			availableSizes: ['XS', 'XXL'],
 			price: 400,
 		},
 		{
 			id: 'p15',
-			image:
-				'https://rukminim1.flixcart.com/image/832/832/l0jwbrk0/t-shirt/t/n/1/-original-imagcapej87sqqkx.jpeg?q=70',
+			image: 'p1',
+			images: ['p1-image1', 'p1-image2', 'p1-image3', 'p1-image4'],
 			title: 'Black T-Shirt',
 			availableSizes: ['XS', 'M', 'XXL'],
 			price: 400,
 		},
 		{
 			id: 'p16',
-			image:
-				'https://rukminim1.flixcart.com/image/832/832/l0jwbrk0/t-shirt/t/n/1/-original-imagcapej87sqqkx.jpeg?q=70',
+			image: 'p1',
+			images: ['p1-image1', 'p1-image2', 'p1-image3', 'p1-image4'],
 			title: 'Black T-Shirt',
 			availableSizes: ['XS', 'S', 'M'],
 			price: 400,
