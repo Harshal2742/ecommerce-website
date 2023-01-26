@@ -30,7 +30,7 @@ const CartItem = (props) => {
       </div>
 
       <div className={styles['product-title']}>
-        <p>{props.item.title}</p>
+        <p>{props.item.name}</p>
       </div>
 
       <div className={styles.quantity}>

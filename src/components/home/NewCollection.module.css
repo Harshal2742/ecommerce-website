@@ -1,0 +1,47 @@
+
+.NewCollection{
+  margin: 2rem 0rem;
+  width: 100%;
+  height: 30rem;
+  display: flex;
+  align-items: center;
+  gap:2rem;
+}
+
+.NewCollection__Images{
+  display: flex;
+  position: relative;
+}
+
+.NewCollection__Image_1{
+  width: 20rem;
+  height: 20rem;
+  border-radius: 1rem;
+  transform: rotate(-5deg);
+}
+
+.NewCollection__Image_2{
+  width: 20rem;
+  height: 20rem;
+  border-radius: 1rem;
+  transform: rotate(15deg);
+  filter: brightness(80%); 
+}
+
+
+.NewCollection__Information{
+  width: 50rem;
+}
+
+.Information__Title{
+  width: 12rem;
+  margin: 1rem 0rem;
+}
+
+.Information__Text{
+  text-align: justify;
+}
+
+.Button{
+  margin: 2rem 0rem;
+}

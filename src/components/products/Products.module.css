@@ -1,18 +1,22 @@
-.main{
+.Container{
     display: flex;
+    width: 100%;
+    min-height: 84.5vh;
+    gap: 2rem;
 }
 
-.products{
-    flex-grow: 6;
-    position: relative;
-    margin-left: 1rem;
+.Products{
+    flex: 1 1 80%;
 }
 
-.items{
+.Filters{
+    flex: 1 1 20%;
+}
+
+.Products__Items{
+    margin: 1rem;
     display: grid;
-    grid-template-columns: auto auto auto auto;
-    gap: 2rem 4rem;
-    text-align: center;
-    margin: 1rem 0rem;
+    grid-template-columns: 22.5% 22.5% 22.5% 22.5%;
+    gap: 2rem 2.5rem;
 }
 

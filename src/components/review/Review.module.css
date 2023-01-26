@@ -1,0 +1,81 @@
+.Container{
+  min-height: 85vh;
+  box-shadow: 0rem 0rem 1rem rgb(190, 190, 190);
+  padding: 1rem;
+}
+
+.Product{
+  display: flex;
+  gap:2rem;
+  margin: 1rem 0rem;
+}
+
+.Product__Image{
+  height: 11rem;
+  width: 8rem;
+  margin: 0rem 0.5rem;
+}
+
+.Product__Title{
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+
+.Rating > * {
+  margin: 0.3rem 0rem;
+}
+
+.Rating__Stars{
+  margin: 0rem 0.5rem;
+
+}
+
+.Rating__Stars_Star:hover{
+  cursor: pointer;
+}
+
+form > * {
+  margin: 1rem 0rem;
+}
+
+.Review > *{
+  margin: 0.3rem 0rem;
+}
+
+.Review > textarea {
+  box-sizing: border-box;
+  font-family: inherit;
+  text-align: justify;
+  font-size: 1rem;
+  float: left;
+  width: 99%;
+  min-height: 11rem;
+  resize: none;
+  outline: none;
+  padding: 0.5rem;
+  margin-left: 0.5rem;
+}
+
+.Review > textarea::-webkit-scrollbar{
+  width:0.7rem;
+}
+
+.Review > textarea::-webkit-scrollbar-track{ 
+  background-color: transparent;
+  width:0.7rem;
+}
+
+.Review > textarea::-webkit-scrollbar-thumb{
+  background-color: transparent;
+  border-radius: 0.5rem;
+}
+
+.Review > textarea:hover::-webkit-scrollbar-thumb{
+  background-color: rgb(230, 230, 230);
+}
+
+.ButtonWrapper{
+  float: right;
+}
+

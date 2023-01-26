@@ -1,6 +1,6 @@
 import styles from './List.module.css';
 
-const List = (props) => {
+const RadioButtons = (props) => {
 	const listWrapperStyle = props.listWrapperStyle || styles.ListWrapper;
 	const listTitleStyle = props.listTitleStyle || styles.List__Title;
 	const listStyle = props.listStyle || styles.List;
@@ -9,14 +9,14 @@ const List = (props) => {
 		<div className={listWrapperStyle}>
 			<p className={listTitleStyle}>{props.listTitle}</p>
 			<ul className={listStyle}>
-				{props.listItems.map((color, index) => {
+				{props.listItems.map((item, index) => {
 					const classes =
-						index === 0
+						index === 0 && props.firstSelected
 							? `${props.listItemStyle} ${props.listItemSelectedStyle}`
 							: `${props.listItemStyle}`;
 					return (
 						<li key={index} className={classes} onClick={props.OnClickHandler} data-index={index}>
-							{color}
+							{item}
 						</li>
 					);
 				})}
@@ -25,4 +25,4 @@ const List = (props) => {
 	);
 };
 
-export default List;
+export default RadioButtons;

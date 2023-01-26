@@ -1,0 +1,14 @@
+.Checkboxes {
+  margin: 0.5rem 0rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+}
+
+.Checkboxes__Box > input{
+  cursor: pointer;
+}
+.Checkboxes__Box > label{
+  cursor: pointer;
+  margin: 0rem 0.2rem;
+}

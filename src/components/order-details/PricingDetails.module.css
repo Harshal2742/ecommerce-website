@@ -1,0 +1,20 @@
+.Pricing{
+  flex-basis: 33.33%;
+  padding:1rem;
+}
+
+.Pricing p{
+  margin: 0.5rem 0rem;
+}
+
+.Pricing__Content_Amount{
+  float: right;
+}
+
+.PricingWrapper{
+  border-bottom: 2px solid black;
+}
+
+.PricingWrapper span{
+  font-weight: 500;
+}

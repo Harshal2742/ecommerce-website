@@ -3,7 +3,6 @@ import { useDispatch } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faIndianRupee, faStar } from '@fortawesome/free-solid-svg-icons';
 
-import List from '../UI/List';
 import { cartActions } from '../../store/cart-slice';
 import { Fragment } from 'react';
 
@@ -11,36 +10,28 @@ const ProductDetails = (props) => {
 	const dispatch = useDispatch();
 
 	const addToCartHandler = () => {
+		const colors = document.getElementsByName('color');
+		let selectedColor;
+		colors.forEach((color) => {
+			if (color.checked) {
+				selectedColor = color.value;
+			}
+		});
+		console.log(selectedColor);
+
+		const sizes = document.getElementsByName('size');
+		let selectedSize;
+		sizes.forEach((size) => {
+			if (size.checked) {
+				selectedSize = size.value;
+			}
+		});
+		console.log(selectedSize);
+		
 		dispatch(cartActions.addItem({ ...props.item }));
 	};
 
-	const colorOnClickHandler = (event) => {
-		// select previous selected color
-		const prevSelectedColor = document.getElementsByClassName(
-			styles.Colours__Color_Selected
-		);
-
-		// remove List__item_Selected class from previous selected
-		prevSelectedColor[0].classList.remove(styles.Colours__Color_Selected);
-
-		// Add List__item_Selected to current clicked element
-		event.target.className = `${styles.Colours__Color} ${styles.Colours__Color_Selected}`;
-		console.log(event.target.textContent);
-	};
-
-	const sizeOnClickHandler = (event) => {
-		// select previous selected size
-		const prevSelectedColor = document.getElementsByClassName(
-			styles.Sizes__Size_Selected
-		);
-
-		// remove List__item_Selected class from previous selected
-		prevSelectedColor[0].classList.remove(styles.Sizes__Size_Selected);
-
-		// Add List__item_Selected to current clicked element
-		event.target.className = `${styles.Sizes__Size} ${styles.Sizes__Size_Selected}`;
-		console.log(event.target.textContent);
-	};
+	
 
 	return (
 		<Fragment>
@@ -50,7 +41,7 @@ const ProductDetails = (props) => {
 				</p>
 			</div>
 			<div>
-				<p className={styles.Details__Title}>{props.item.title}</p>
+				<p className={styles.Details__Title}>{props.item.name}</p>
 			</div>
 			<div className={styles.Details__PriceIconWrapper}>
 				<FontAwesomeIcon icon={faIndianRupee} />
@@ -65,23 +56,54 @@ const ProductDetails = (props) => {
 					{`${props.item.ratingsQuantity} ratings and ${props.item.reviewsQuantity} reviews`}
 				</div>
 			</div>
-			<div>
-				<List
-					listItemSelectedStyle={styles.Colours__Color_Selected}
-					listItemStyle={styles.Colours__Color}
-					listTitle={'Select color'}
-					listItems={props.item.availableColor}
-					OnClickHandler={colorOnClickHandler}
-				/>
+			<div className={styles.Colors}>
+				<h4>Color</h4>
+				<div className={styles.RadioButtonWrapper}>
+					{props.item.availableColor.map((color, index) => {
+						return (
+							<Fragment key={index}>
+								{index === 0 ? (
+									<input
+										type="radio"
+										id={color}
+										name="color"
+										value={color}
+										defaultChecked
+									/>
+								) : (
+									<input type="radio" id={color} name="color" value={color} />
+								)}
+								<label htmlFor={color}>{color}</label>
+							</Fragment>
+						);
+					})}
+				</div>
+			</div>
+			<div className={styles.Sizes}>
+				<h4>Size</h4>
+				<div className={styles.RadioButtonWrapper}>
+					{props.item.availableSizes.map((size, index) => {
+						return (
+							<Fragment key={index}>
+								{index === 0 ? (
+									<input
+										type="radio"
+										id={size}
+										name="size"
+										value={size}
+										defaultChecked
+									/>
+								) : (
+									<input type="radio" id={size} name="size" value={size} />
+								)}
+								<label htmlFor={size}>{size}</label>
+							</Fragment>
+						);
+					})}
+				</div>
 			</div>
 			<div>
-				<List
-					listItemStyle={styles.Sizes__Size}
-					listItemSelectedStyle={styles.Sizes__Size_Selected}
-					listTitle={'Select size'}
-					listItems={props.item.availableSizes}
-					OnClickHandler={sizeOnClickHandler}
-				/>
+				
 			</div>
 			<div>
 				<button className={styles.Button} onClick={addToCartHandler}>

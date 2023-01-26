@@ -9,8 +9,10 @@
 }
 
 .List{
-  display: flex;
   list-style: none;
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
   gap:1rem;
 }
 

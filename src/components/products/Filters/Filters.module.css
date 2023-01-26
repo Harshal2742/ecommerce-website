@@ -1,6 +1,10 @@
 .filter{
-    flex-basis: 16rem;
     position: relative;
     border-right: 2px solid rgb(198, 198, 198);
-    margin: 0rem 1rem;
+}
+
+.filter > div {
+    margin: 1rem 1rem;
+    border-bottom: 1px solid rgb(152, 152, 152);
+    /* padding: 1rem; */
 }

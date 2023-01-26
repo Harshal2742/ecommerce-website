@@ -2,53 +2,96 @@ import styles from './MyOrders.module.css';
 import FilterSort from './FilterSort';
 import OrderItem from './OrderItem';
 
-const order = [
+const orders = [
 	{
-		orderId: 'order-1',
-		id: 'p1',
-		image:
-			'https://rukminim1.flixcart.com/image/832/832/l0jwbrk0/t-shirt/t/n/1/-original-imagcapej87sqqkx.jpeg?q=70',
-		title: 'Black T-Shirt',
-		availableSizes: ['L', 'XL', 'XXL'],
-		price: 400,
-		orderStatus: 'Delivered',
-		date: Date.now(),
-	},
-	{
-		orderId: 'order-1',
-		id: 'p1',
-		image:
-			'https://rukminim1.flixcart.com/image/832/832/l0jwbrk0/t-shirt/t/n/1/-original-imagcapej87sqqkx.jpeg?q=70',
-		title: 'Black T-Shirt',
-		availableSizes: ['L', 'XL', 'XXL'],
-		price: 400,
-		orderStatus: 'Cancelled',
-		date: Date.now(),
-	},
-	{
-		orderId: 'order-1',
-		id: 'p1',
-		image:
-			'https://rukminim1.flixcart.com/image/832/832/l0jwbrk0/t-shirt/t/n/1/-original-imagcapej87sqqkx.jpeg?q=70',
-		title: 'Black T-Shirt',
-		availableSizes: ['L', 'XL', 'XXL'],
-		price: 400,
+		id: 'order-1',
+		product: {
+			id: 'p1',
+			image: 'p1',
+			name: 'Men Slim Fit Checkered Spread Collar Casual Shirt',
+			price: 400,
+		},
+		selectedSize: 'X',
+		selectedColor: 'red',
+		selectedQuantity: 4,
+		deliveryAddress: {
+			name: 'Raj Patil',
+			address: '502 Basti galli,Shedshal, Kolhapur District',
+			postalCode: '416105',
+			state: 'Maharashtra',
+			phoneNumber: ['1234567890', '0987654321'],
+		},
+		orderDate: new Date(),
 		orderStatus: 'Not yet delivered',
-		date: new Date().getUTCFullYear(),
+		deliveryDate: new Date(),
+	},
+	{
+		id: 'order-2',
+		product: {
+			id: 'p1',
+			image: 'p1',
+			name: 'Spread Collar Casual Shirt',
+			price: 400,
+		},
+		selectedSize: 'X',
+		selectedColor: 'red',
+		selectedQuantity: 4,
+		deliveryAddress: {
+			name: 'Raj Patil',
+			address: '502 Basti galli,Shedshal, Kolhapur District',
+			postalCode: '416105',
+			state: 'Maharashtra',
+			phoneNumber: ['1234567890', '0987654321'],
+		},
+		orderDate: new Date(),
+		orderStatus: 'Not yet delivered',
+		deliveryDate: new Date(),
+	},
+	{
+		id: 'order-3',
+		product: {
+			id: 'p1',
+			image: 'p1',
+			name: 'Men Slim Fit Checkered Spread Collar Casual Shirt',
+			price: 400,
+		},
+		selectedSize: 'X',
+		selectedColor: 'red',
+		selectedQuantity: 4,
+		deliveryAddress: {
+			name: 'Raj Patil',
+			address: '502 Basti galli,Shedshal, Kolhapur District',
+			postalCode: '416105',
+			state: 'Maharashtra',
+			phoneNumber: ['1234567890', '0987654321'],
+		},
+		orderDate: new Date(),
+		orderStatus: 'Not yet delivered',
+		deliveryDate: new Date(),
+	},
+	{
+		id: 'order-4',
+		product: {
+			id: 'p1',
+			image: 'p1',
+			name: 'Men Slim Fit Checkered Spread Collar Casual Shirt',
+			price: 400,
+		},
+		selectedSize: 'X',
+		selectedColor: 'red',
+		selectedQuantity: 4,
+		deliveryAddress: {
+			name: 'Raj Patil',
+			address: '502 Basti galli,Shedshal, Kolhapur District',
+			postalCode: '416105',
+			state: 'Maharashtra',
+			phoneNumber: ['1234567890', '0987654321'],
+		},
+		orderDate: new Date(),
+		orderStatus: 'Not yet delivered',
+		deliveryDate: new Date(),
 	},
 ];
-
-const item = {
-	orderId: 'order-1',
-	id: 'p1',
-	image:
-		'https://rukminim1.flixcart.com/image/832/832/l0jwbrk0/t-shirt/t/n/1/-original-imagcapej87sqqkx.jpeg?q=70',
-	title: 'Black T-Shirt',
-	availableSizes: ['L', 'XL', 'XXL'],
-	price: 400,
-	orderStatus: 'Not yet delivered',
-	date: new Date().toISOString(),
-};
 
 const MyOrders = () => {
 	return (
@@ -58,16 +101,9 @@ const MyOrders = () => {
 				<FilterSort />
 			</div>
 			<div>
-				<OrderItem item={item} />
-				<OrderItem item={item} />
-				<OrderItem item={item} />
-				<OrderItem item={item} />
-				<OrderItem item={item} />
-				<OrderItem item={item} />
-				<OrderItem item={item} />
-				<OrderItem item={item} />
-				<OrderItem item={item} />
-				<OrderItem item={item} />
+				{orders.map((order, index) => {
+					return <OrderItem key={index} order={order} />;
+				})}
 			</div>
 		</section>
 	);

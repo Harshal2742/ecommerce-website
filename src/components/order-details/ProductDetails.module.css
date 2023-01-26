@@ -1,0 +1,50 @@
+.Product{
+  width: 100%;
+  display: flex;
+  gap:2rem;
+}
+
+.Product__ImageWrapper{
+  flex-basis: 10%;
+}
+
+.Product__Image{
+  height: 8rem;
+  width: 6rem;
+  margin: 1rem;
+}
+
+
+.Product__Details{
+  flex-basis: 41.5%;
+  margin: 1rem;
+}
+
+.Product__Details_Brand{
+  font-weight: bold;
+  color: rgb(132, 132, 132);
+}
+
+.Product__Details_Name{
+  font-size:1.1rem ;
+  font-weight: bold;
+}
+
+.Product__Details_Price{
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin: 1rem 0rem;
+}
+
+.Selected{
+  box-shadow: 0rem 0rem 1rem rgb(190, 190, 190);
+  max-height: 15rem;
+  flex-basis: 60%;
+  padding: 1rem;
+  justify-self: flex-end;
+  border-radius: 0.5rem;
+}
+
+.Selected > p {
+  margin-bottom: 0.5rem;
+}

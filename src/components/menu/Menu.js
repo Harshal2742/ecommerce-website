@@ -41,7 +41,7 @@ const Menu = () => {
 			<div>
 				<div className={styles.profileImg}>
 					<img
-						src="https://rukminim1.flixcart.com/image/832/832/l0jwbrk0/t-shirt/t/n/1/-original-imagcapej87sqqkx.jpeg?q=70"
+						src={`${process.env.PUBLIC_URL}/img/users/default.jpg`}
 						alt="my profile"
 					/>
 

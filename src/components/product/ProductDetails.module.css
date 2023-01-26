@@ -39,57 +39,55 @@
   font-weight: 700;
 }
 
-.Colours__Color{
-  border: 2px solid rgb(130, 130, 130);
-  width: 60px;
+.Colors{
+  margin: 1rem 0rem;
+}
+
+.Colors h4{
+  color: rgb(95, 95, 95);
+  font-weight: bold;
+}
+
+.RadioButtonWrapper > input{
+  display: none;
+}
+
+
+.RadioButtonWrapper > label {
+  line-height: 1.2rem;
+  cursor: pointer;
+  display: inline-block;
+  border: 0.13rem solid rgb(180, 180, 180);
+  color: rgb(180, 180, 180);
+  margin:0.5rem 0rem;
+  margin-right: 1rem;
+  width: 4rem;
   text-align: center;
   border-radius: 1rem;
-  height: 1.5rem;
-  color: rgb(132, 132, 132);
-}
-.Colours__Color:hover{
-  cursor: pointer;
-  background-color: rgb(255, 255, 255);
-  border: 2px solid rgb(0, 0, 0);
-  color: rgb(0, 0, 0);
 }
 
-.Colours__Color_Selected{
-  background-color: black;
-  border: 2px solid rgb(0, 0, 0);
-  color: white;
-}
-.Colours__Color_Selected:hover{
-  cursor: pointer;
-  background-color: black;
-  border: 2px solid rgb(0, 0, 0);
-  color: white;
+.RadioButtonWrapper > label:hover{
+  border: 0.13rem solid rgb(0, 0, 0);
+  color:black;
 }
 
-.Sizes__Size{
-  border: 2px solid rgb(130, 130, 130);
-  width: 60px;
-  text-align: center;
-  height: 1.5rem;
-  color: rgb(132, 132, 132);
-}
-.Sizes__Size:hover{
-  cursor: pointer;
-  background-color: rgb(255, 255, 255);
-  border: 2px solid rgb(0, 0, 0);
-  color: rgb(0, 0, 0);
+.RadioButtonWrapper > input:checked + label{
+  border: 0.13rem solid rgb(0, 0, 0);
+  color: white;
+  background-color: black;
 }
 
-.Sizes__Size_Selected{
-  background-color: black;
-  border: 2px solid rgb(0, 0, 0);
-  color: white;
+.Sizes{
+  margin: 1rem 0rem;
 }
-.Sizes__Size_Selected:hover{
-  cursor: pointer;
-  background-color: black;
-  border: 2px solid rgb(0, 0, 0);
-  color: white;
+
+.Sizes h4{
+  color: rgb(95, 95, 95);
+  font-weight: bold;
+} 
+
+.Sizes .RadioButtonWrapper label{
+  border-radius: 0rem;
 }
 
 .Product__Description{

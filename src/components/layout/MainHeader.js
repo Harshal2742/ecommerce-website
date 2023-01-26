@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import { uiActions } from '../../store/uiAction-slice';
+import { FaOpencart } from 'react-icons/fa';
 
 const MainHeader = () => {
 	const navigate = useNavigate();
@@ -30,7 +31,7 @@ const MainHeader = () => {
 	return (
 		<nav className={styles.nav}>
 			<h1 className={styles.name} onClick={titleOnClickHandler}>
-				SHOPNOW
+				<FaOpencart /> SHOPNOW
 			</h1>
 			<ul>
 				<ul className={styles['auth-cart']}>

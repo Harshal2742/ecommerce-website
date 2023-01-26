@@ -1,46 +1,51 @@
 .item{
-    height: 28rem;
-    text-align: center;
+    height: 26rem;
     position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    padding: 1rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .item:hover{
     box-shadow: 0rem 0rem 1rem rgb(220, 220, 220);
 }
 
-.item__ImagePriceDiv:hover{
+.Item__Image{
     cursor: pointer;
-}
-.item img{
-    width: 100%;
+    width: 13rem;
     height: 18rem;
 }
 
 
-.title{
-    height: 3rem;
-}
-
-div span{
+.Item__Brand{
     font-weight: bold;
-    font-size: 20;
+    color: rgb(141, 141, 141);
 }
 
-.item button{
+.Item__Name{
+    font-weight: 600;
+    height: 3rem;
+    max-width: 13rem;
+}
+
+.Item__PriceCartWrapper{
+    display: flex;
+    justify-content: space-between;
+}
+
+.Item__Price{
+    font-weight: bold;
+}
+
+.Item__AddToCart{
     cursor: pointer;
-    width: 100%;
-    height: 40px;
-    background: #252525;
-    color: white;
-    margin-top: 0.5rem;
+    font-size: 1.3rem;
+    color: rgb(81, 81, 81);
+    transition: all 0.3s;
 }
 
-.item button:hover{
-    background-color: rgb(215, 214, 214);
+.Item__AddToCart:hover{
+    transform: scale(1.2);
     color: rgb(0, 0, 0);
 }
-

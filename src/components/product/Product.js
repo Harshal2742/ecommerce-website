@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import styles from './Product.module.css';
-import ImageSlider from '../UI/ImageSlider';
+import DivSlider from '../UI/DivSlider';
 import ProductDetails from './ProductDetails';
 import RatingAndReview from './RatingAndReview';
 import HorizontalScrollingBox from '../UI/HorizontalScrollingBox';
@@ -8,11 +8,11 @@ import HorizontalScrollingBox from '../UI/HorizontalScrollingBox';
 const item = {
 	id: 'p1',
 	brand: 'Lewel',
-	title: 'Men Slim Fit Checkered Casual Shirt',
+	name: 'Men Slim Fit Checkered Casual Shirt',
 	image: 'p1',
 	images: ['p1-image1', 'p1-image2', 'p1-image3', 'p1-image4'],
 	availableSizes: ['L', 'XL', 'XXL'],
-	availableColor: ['red', 'black', 'green'],
+	availableColor: ['Red', 'Black', 'Green'],
 	discription:
 		'Surhi presents to you a new range of stylish and cool new shirts yet which are affordable for everyone. This fashionable and stylish Surhi men shirt makes your look cool and attractive. It is perfect for your summer attire.',
 	price: 349,
@@ -91,11 +91,24 @@ const Product = () => {
 	// request for product
 	const { productId } = useParams();
 
+	const images = item.images.map((url) => {
+		return (
+			<img
+				style={{ width: 400, height: 500 }}
+				src={`${process.env.PUBLIC_URL}/img/products/${url}.jpg`}
+				alt="product"
+			/>
+		);
+	});
+
 	return (
 		<div className={styles.Product}>
 			<div className={styles.Product__ImagesAndDetails}>
 				<div className={styles.Product__Images}>
-					<ImageSlider images={item.images} width={400} height={500} />
+					<DivSlider
+						elements={images}
+						timeInterval={2500}
+					/>
 				</div>
 				<div className={styles.Product__Details}>
 					<ProductDetails item={item} />

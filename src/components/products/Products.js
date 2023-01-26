@@ -9,14 +9,16 @@ const Products = () => {
 		(state) => state.products.availableProductsCount
 	);
 	return (
-		<div className={styles.main}>
-			<Filters />
-			<div className={styles.products}>
+		<div className={styles.Container}>
+			<div className={styles.Filters}>
+				<Filters />
+			</div>
+			<div className={styles.Products}>
 				<div>
 					<h3>Products</h3>
 					<p>{productsCount} product(s) found</p>
 				</div>
-				<div className={styles.items}>
+				<div className={styles.Products__Items}>
 					{products.map((item) => (
 						<Item item={item} key={item.id} />
 					))}

@@ -1,0 +1,50 @@
+.Footer{
+  width: 100%;
+  height: 8rem;
+  background-color: rgb(25, 25, 25);
+  padding: 1rem;
+}
+
+.Container{
+  display: flex;
+  justify-content: space-between;
+}
+
+.Name{
+  color: rgb(255, 255, 255);
+  font-style: italic;
+  font-weight: bolder;
+}
+
+.AboutSection{
+  display: flex;
+  gap:1rem;
+}
+
+.AboutSection > p {
+  cursor: pointer;
+  color: rgb(113, 113, 113);
+}
+.AboutSection > p:hover {
+  color: rgb(159, 159, 159);
+}
+
+.Footer__Social{
+  text-align: center;
+  color: rgb(205, 205, 205);
+}
+
+.Footer__Social > span {
+  cursor: pointer;
+  font-size: 1.3rem;
+  margin: 0rem 0.5rem;
+}
+.Footer__Social > span:hover {
+  color:white;
+}
+
+.Footer__CopyRight{
+  color: rgb(95, 95, 95);
+  margin: 0.5rem;
+  text-align: center;
+}

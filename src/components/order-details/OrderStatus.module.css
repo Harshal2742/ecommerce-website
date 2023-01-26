@@ -1,0 +1,9 @@
+.OrderStatus{
+  padding: 1rem;
+  border-left: 2px solid rgb(228, 228, 228);
+  flex-basis: 33.33%;
+}
+
+.orderDates > p{
+  margin: 1rem 0rem;
+}

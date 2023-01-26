@@ -1,0 +1,26 @@
+.Container{
+  width: 100%;
+  height: auto;
+  padding: 1rem;
+  text-align: center;
+}
+
+.Container h2{
+  text-align: center;
+  display: inline-block;
+  border-bottom: 0.2rem solid black;
+}
+
+.Products{
+  margin: 1rem;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  gap:3rem 2rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.Product__Image{
+  width: 12rem;
+  height: 17rem;
+}

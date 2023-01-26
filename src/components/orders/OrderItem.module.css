@@ -5,14 +5,12 @@
   box-shadow: 0rem 0rem 1rem rgb(220, 220, 220);
   padding: 1rem;
   margin: 0.8rem 0rem;
-}
-
-.Item{
   cursor: pointer;
 }
 
 .Item__element{
   flex-grow: 1;
+  flex-basis: 10%;
 }
 
 .Item__Image{
