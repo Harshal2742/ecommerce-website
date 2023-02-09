@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = { showCart: false, showMenu: false };
+const initialState = { showCart: false, showMenu: false,isLoading: false  };
 
 const uiSlice = createSlice({
   name: 'cartVisible',
@@ -11,7 +11,10 @@ const uiSlice = createSlice({
     },
     toggleShowMenu(state){
       state.showMenu = !state.showMenu;
-    }
+    },
+    toggleSpinner(state) {
+      state.isLoading = !state.isLoading;
+    },
   },
 });
 

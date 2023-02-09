@@ -1,0 +1,83 @@
+
+.conatiner{
+    height: 84.5vh;
+    margin: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.card{
+    width: 23rem;
+    height: 35rem;
+    box-shadow: 0rem 0rem 1rem rgb(162, 162, 162);
+    border-radius: 1rem;
+}
+
+.name{
+    font-style: italic;
+    text-align: center;
+    margin: 1rem;
+    font-weight: bolder;
+}
+
+.card h2{
+    text-align: center;
+    margin: 1rem;
+}
+
+.Form{
+    width: 23rem;
+}
+
+.Form > div{
+    width: 23rem;
+    margin: 1rem 0rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+.card form input{
+    outline: none;
+    width: 80%;
+    height: 2rem;
+    border: 2px solid rgb(190, 190, 190);
+    border-radius: 0.4rem;
+    padding: 0rem 0.5rem;
+    line-height: 0.1rem;
+}
+
+
+.card form input:focus{
+    border: 2px solid rgb(0, 0, 0);
+}
+
+.card form label{
+    display: block;
+    width: 80%;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button{
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.card .message{
+    color: red;
+    height: 1.5rem;
+    text-align: center;
+    margin: 0.5rem 1rem;
+}
+
+.ButtonWrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:1rem;
+}

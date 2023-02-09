@@ -1,101 +1,56 @@
 import { useParams } from 'react-router-dom';
 import styles from './Product.module.css';
-import DivSlider from '../UI/DivSlider';
+import Slider from '../UI/Slider';
 import ProductDetails from './ProductDetails';
 import RatingAndReview from './RatingAndReview';
 import HorizontalScrollingBox from '../UI/HorizontalScrollingBox';
+import useHttp from '../../hooks/useHttp';
+import { Fragment, useEffect, useState } from 'react';
 
-const item = {
-	id: 'p1',
-	brand: 'Lewel',
-	name: 'Men Slim Fit Checkered Casual Shirt',
-	image: 'p1',
-	images: ['p1-image1', 'p1-image2', 'p1-image3', 'p1-image4'],
-	availableSizes: ['L', 'XL', 'XXL'],
-	availableColor: ['Red', 'Black', 'Green'],
-	discription:
-		'Surhi presents to you a new range of stylish and cool new shirts yet which are affordable for everyone. This fashionable and stylish Surhi men shirt makes your look cool and attractive. It is perfect for your summer attire.',
-	price: 349,
-	avgRating: 4.3,
-	ratingsQuantity: 1024,
-	reviewsQuantity: 342,
-};
-
-const usersRatingsAndReviews = [
-	{
-		name: 'Raj Patil',
-		image: 'default',
-		rating: 4,
-		review: `Wow nice shirt at this price...i am satisfied with this shirt..if you're 20+ age then you have to go with M size... perfect size and length..just worth it.`,
-		date: new Date(),
-	},
-	{
-		name: 'Kiran Patil',
-		image: 'default',
-		rating: 4,
-		review: `Wow nice shirt at this price...i am satisfied with this shirt..if you're 20+ age then you have to go with M size... perfect size and length..just worth it.`,
-		date: new Date(),
-	},
-	{
-		name: 'Kishor Rajput',
-		image: 'default',
-		rating: 2,
-		review: `Wow nice shirt at this price...i am satisfied with this shirt..if you're 20+ age then you have to go with M size... perfect size and length..just worth it.`,
-		date: new Date(),
-	},
-	{
-		name: 'Shree Koli',
-		image: 'default',
-		rating: 5,
-		review: `Wow nice shirt at this price...i am satisfied with this shirt..if you're 20+ age then you have to go with M size... perfect size and length..just worth it.`,
-		date: new Date(),
-	},
-	{
-		name: 'Jaysh Nikumber',
-		image: 'default',
-		rating: 1,
-		review: `Wow nice shirt at this price...i am satisfied with this shirt..if you're 20+ age then you have to go with M size... perfect size and length..just worth it.`,
-		date: new Date(),
-	},
-	{
-		name: 'Jaysh Nikumber',
-		image: 'default',
-		rating: 5,
-		review: `Wow nice shirt at this price...i am satisfied with this shirt..if you're 20+ age then you have to go with M size... perfect size and length..just worth it.`,
-		date: new Date(),
-	},
-	{
-		name: 'Jaysh Nikumber',
-		image: 'default',
-		rating: 3,
-		review: `Wow nice shirt at this price...i am satisfied with this shirt..if you're 20+ age then you have to go with M size... perfect size and length..just worth it.`,
-		date: new Date(),
-	},
-	{
-		name: 'Jaysh Nikumber',
-		image: 'default',
-		rating: 3,
-		review: `Wow nice shirt at this price...i am satisfied with this shirt..if you're 20+ age then you have to go with M size... perfect size and length..just worth it.`,
-		date: new Date(),
-	},
-	{
-		name: 'Jaysh Nikumber',
-		image: 'default',
-		rating: 3,
-		review: `Wow nice shirt at this price...i am satisfied with this shirt..if you're 20+ age then you have to go with M size... perfect size and length..just worth it.`,
-		date: new Date(),
-	},
-];
+// const product = {
+// 	id: 'p1',
+// 	brand: 'Lewel',
+// 	title: 'Men Slim Fit Checkered Casual Shirt',
+// 	image: 'p1',
+// 	images: ['p1-image1', 'p1-image2', 'p1-image3', 'p1-image4'],
+// 	selection: {
+// 		size: ['L', 'XL', 'XXL'],
+// 		color: ['Red', 'Black', 'Green'],
+// 	},
+// 	discription:
+// 		'Surhi presents to you a new range of stylish and cool new shirts yet which are affordable for everyone. This fashionable and stylish Surhi men shirt makes your look cool and attractive. It is perfect for your summer attire.',
+// 	price: 349,
+// 	avgRating: 4.3,
+// 	ratingsQuantity: 1024,
+// 	reviewsQuantity: 342,
+// };
 
 const Product = () => {
 	// request for product
+	const [product, setProduct] = useState({});
+	const [isLoaded, setIsLoaded] = useState(false);
+	const { sendRequest } = useHttp();
 	const { productId } = useParams();
+	useEffect(() => {
+		const dataTransformer = (response) => {
+			setProduct(response.data.doc);
+			setIsLoaded(true);
+		};
 
-	const images = item.images.map((url) => {
+		const url = `${process.env.REACT_APP_API_URL}/products/${productId}`;
+		sendRequest({ url }, dataTransformer);
+	}, [productId, sendRequest]);
+
+	if (!isLoaded) {
+		return <></>;
+	}
+
+	const imageSlides = product.images.map((image, index) => {
 		return (
 			<img
+				key={index}
 				style={{ width: 400, height: 500 }}
-				src={`${process.env.PUBLIC_URL}/img/products/${url}.jpg`}
+				src={`${process.env.REACT_APP_API_PRODUCT_IMG}/${image}`}
 				alt="product"
 			/>
 		);
@@ -105,13 +60,10 @@ const Product = () => {
 		<div className={styles.Product}>
 			<div className={styles.Product__ImagesAndDetails}>
 				<div className={styles.Product__Images}>
-					<DivSlider
-						elements={images}
-						timeInterval={2500}
-					/>
+					<Slider slides={imageSlides} timeInterval={2000} />
 				</div>
 				<div className={styles.Product__Details}>
-					<ProductDetails item={item} />
+					<ProductDetails product={product} />
 				</div>
 			</div>
 			<div className={styles.Product__RatingAndReviews}>
@@ -119,8 +71,8 @@ const Product = () => {
 					Ratings & Reviews
 				</h4>
 				<HorizontalScrollingBox>
-					{usersRatingsAndReviews.map((user, index) => {
-						return <RatingAndReview key={index} user={user} />;
+					{product.reviews.map((review, index) => {
+						return <RatingAndReview key={index} review={review} />;
 					})}
 				</HorizontalScrollingBox>
 			</div>

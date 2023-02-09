@@ -1,18 +1,16 @@
 import { configureStore } from '@reduxjs/toolkit';
 import uiActionReducer from './uiAction-slice';
 import cartReducer from './cart-slice';
-import productsReducer from './products-slice';
-import spinnerReducer from './spinner-slice';
 import userReducer from './user-slice';
+import notificationReducer from './notification-slice';
 
 const store = configureStore({
-  reducer: {
-    uiAction:uiActionReducer,
-    cart: cartReducer,
-    products: productsReducer,
-    spinner: spinnerReducer,
-    user: userReducer,
-  },
+	reducer: {
+		uiAction: uiActionReducer,
+		cart: cartReducer,
+		user: userReducer,
+		notification: notificationReducer,
+	},
 });
 
 export default store;

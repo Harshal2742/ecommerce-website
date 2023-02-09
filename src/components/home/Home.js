@@ -1,16 +1,16 @@
 import styles from './Home.module.css';
-import DivSlider from '../UI/DivSlider';
+import Slider from '../UI/Slider';
 import NewCollection from './NewCollection';
 import MostPopularProducts from './MostPopularProducts';
 
 const Home = () => {
-	const sliderImages = [
-		'slider-image-1',
-		'slider-image-2',
-		'slider-image-3',
-		'slider-image-4',
-		'slider-image-5',
-		'slider-image-6',
+	const images = [
+		'slider-image-1.jpg',
+		'slider-image-2.jpg',
+		'slider-image-3.jpg',
+		'slider-image-4.jpg',
+		'slider-image-5.jpg',
+		'slider-image-6.jpg',
 	];
 
 	const sectionTowImages = [
@@ -28,22 +28,24 @@ const Home = () => {
 		},
 	];
 
-	const sliderDivs = sliderImages.map((path) => {
+	const imageSlides = images.map((image,index) => {
 		return (
-			<div>
+			<div key={index}>
 				<img
-					style={{ height: '30rem', width: '100%' }}
-					src={`${process.env.PUBLIC_URL}/img/home/${path}.jpg`}
-					alt="slider"
-				></img>
+					src={`${process.env.PUBLIC_URL}/img/home/${image}`}
+					alt={'slider'}
+					style={{ width: '95vw', height: '30rem' }}
+				/>
 			</div>
 		);
 	});
 
+	// console.log(imageSlides[0]);
+
 	return (
 		<section className={styles.Home}>
 			<div>
-				<DivSlider elements={sliderDivs} timeInterval={3000} />
+				<Slider slides={imageSlides} timeInterval={3000}/>
 			</div>
 			<div>
 				<NewCollection />

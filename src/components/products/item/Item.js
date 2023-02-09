@@ -2,7 +2,8 @@ import styles from './Item.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faIndianRupee } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch } from 'react-redux';
-import { cartActions } from '../../../store/cart-slice';
+// import { cartActions } from '../../../store/cart-slice';
+import { updateCartData } from '../../../store/httpRequests';
 import { useNavigate } from 'react-router-dom';
 import { FaShoppingCart } from 'react-icons/fa';
 
@@ -11,21 +12,34 @@ const Item = (props) => {
 	const navigate = useNavigate();
 
 	const addToCartHandler = () => {
-		dispatch(cartActions.addItem({ ...props.item }));
+		const { _id, selection } = props.item;
+
+		const mySelection = {};
+
+		for (const key in selection) {
+			mySelection[key] = selection[key][0];
+		}
+
+		const item = {
+			product: _id,
+			mySelection,
+		};
+
+		dispatch(updateCartData('increment', item));
 	};
 
 	return (
 		<div className={styles.item}>
 			<div>
 				<img
-					onClick={() => navigate(`/home/products/${props.item.id}`)}
+					onClick={() => navigate(`/home/products/${props.item._id}`)}
 					className={styles.Item__Image}
-					src={`${process.env.PUBLIC_URL}/img/products/${props.item.image}.jpg`}
+					src={`${process.env.REACT_APP_API_PRODUCT_IMG}/${props.item.image}`}
 					alt={props.item.title}
 					id="example"
 				/>
 				<div className={styles.Item__Brand}>{props.item.brand}</div>
-				<div className={styles.Item__Name}>{props.item.name}</div>
+				<div className={styles.Item__Title}>{props.item.title}</div>
 				<div className={styles.Item__PriceCartWrapper}>
 					<div className={styles.Item__Price}>
 						<FontAwesomeIcon icon={faIndianRupee} />{' '}

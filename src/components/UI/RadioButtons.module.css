@@ -1,0 +1,18 @@
+.ButtonContainer{
+  display: flex;
+  gap:0.5rem;
+}
+
+.Button label{
+  color: #958f8f;
+  cursor: pointer;
+  font-size: 0.7rem;
+}
+
+.Button > input {
+  display: none;
+}
+
+.Button > input:checked + label {
+  color: #252525;
+}

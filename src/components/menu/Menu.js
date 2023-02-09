@@ -1,14 +1,18 @@
 import styles from './Menu.module.css';
 import { uiActions } from '../../store/uiAction-slice';
 import { userActions } from '../../store/user-slice';
-import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserEdit } from '@fortawesome/free-solid-svg-icons';
-import { faStar } from '@fortawesome/free-solid-svg-icons';
-import { faTicketSimple } from '@fortawesome/free-solid-svg-icons';
-import { faSignOut } from '@fortawesome/free-solid-svg-icons';
-import { faBagShopping } from '@fortawesome/free-solid-svg-icons';
+import {
+	faUserEdit,
+	faStar,
+	faTicketSimple,
+	faSignOut,
+	faBagShopping,
+} from '@fortawesome/free-solid-svg-icons';
+
+import { cartActions } from '../../store/cart-slice';
+
 import { useNavigate, Link } from 'react-router-dom';
 
 const Menu = () => {
@@ -30,6 +34,7 @@ const Menu = () => {
 
 	const logoutHanler = () => {
 		dispatch(uiActions.toggleShowMenu());
+		dispatch(cartActions.clearCartData());
 		dispatch(userActions.logoutHanler());
 		navigate('/');
 	};
@@ -49,25 +54,41 @@ const Menu = () => {
 				</div>
 				<ul className={styles.menu}>
 					<li>
-						<Link to="/home/my-orders" className={styles.menu__link} onClick={menuCloseHandler}>
+						<Link
+							to="/home/my-orders"
+							className={styles.menu__link}
+							onClick={menuCloseHandler}
+						>
 							<FontAwesomeIcon icon={faBagShopping} />
 							<span>My Orders</span>
 						</Link>
 					</li>
 					<li>
-						<Link to="/my-coupons" className={styles.menu__link} onClick={menuCloseHandler}>
+						<Link
+							to="/my-coupons"
+							className={styles.menu__link}
+							onClick={menuCloseHandler}
+						>
 							<FontAwesomeIcon icon={faTicketSimple} />
 							<span>Coupons</span>
 						</Link>
 					</li>
 					<li>
-						<Link to="/home/my-ratings-and-reviews" className={styles.menu__link} onClick={menuCloseHandler}>
+						<Link
+							to="/home/my-ratings-and-reviews"
+							className={styles.menu__link}
+							onClick={menuCloseHandler}
+						>
 							<FontAwesomeIcon icon={faStar} />
 							<span>Ratings & Reviews</span>
 						</Link>
 					</li>
 					<li>
-						<Link to="/home/my-profile" className={styles.menu__link} onClick={menuCloseHandler}>
+						<Link
+							to="/home/my-profile"
+							className={styles.menu__link}
+							onClick={menuCloseHandler}
+						>
 							<FontAwesomeIcon icon={faUserEdit} />
 							<span>Edit Profile</span>
 						</Link>

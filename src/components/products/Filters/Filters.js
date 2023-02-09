@@ -1,10 +1,14 @@
 import styles from './Filters.module.css';
 import Checkboxes from '../../UI/Checkboxes';
+import { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 const Filters = () => {
-	const genders = ['Men', 'Women', 'Kids'];
-	const sizes = ['XS', 'S', 'M', 'ML', 'L', 'XL', 'XXL'];
+	const [filter, setFilter] = useState({});
+	const [searchParams, setSearchParams] = useSearchParams();
 
+	const genders = ['men', 'women', 'kids'];
+	const sizes = ['XS', 'S', 'M', 'ML', 'L', 'XL', 'XXL'];
 	const brands = [
 		'ADIDAS',
 		'PUMA',
@@ -13,7 +17,6 @@ const Filters = () => {
 		'TOMMY HILFIGER',
 		'NAUTICA',
 	];
-
 	const customerRatings = ['4★ & above', '3★ & above'];
 	const customerRatingsValues = [4, 3];
 	const prices = [
@@ -21,17 +24,16 @@ const Filters = () => {
 		'Rs. 501 - Rs. 1000',
 		'Rs. 1001 - Rs. 2000',
 	];
-	const pricesValues = ['0-500', '501-1000', '1001-2000', '2001-3000'];
-
+	const pricesValues = ['0to500', '501to1000', '1001to2000', '2001to3000'];
 	const colors = [
-		'Black',
-		'White',
-		'Yellow',
-		'Red',
-		'Blue',
-		'Grey',
-		'Beige',
-		'Brown',
+		'black',
+		'white',
+		'yellow',
+		'red',
+		'blue',
+		'grey',
+		'beige',
+		'brown',
 	];
 
 	const onClickHandler = (event) => {
@@ -46,9 +48,39 @@ const Filters = () => {
 			}
 		});
 
-		// use for sending http request
-		console.log(selectedValues);
+		if (selectedValues.length > 0) {
+			setFilter((prevFilter) => {
+				const updatedFilter = { ...prevFilter };
+				updatedFilter[name] = selectedValues;
+				return updatedFilter;
+			});
+		} else {
+			setFilter((prevFilter) => {
+				const updatedFilter = { ...prevFilter };
+				delete updatedFilter[name];
+				return updatedFilter;
+			});
+		}
 	};
+
+	useEffect(() => {
+		let query = '';
+		for (let key in filter) {
+			query += `${key}:${filter[key]};`;
+		}
+		query = query.substring(0, query.length - 1);
+		setSearchParams((prevSearchParams) => {
+			if (prevSearchParams.has('flt')) {
+				prevSearchParams.delete('flt');
+			}
+
+			if (query.length > 0) {
+				prevSearchParams.set('flt', query);
+			}
+
+			return prevSearchParams;
+		});
+	}, [filter, setSearchParams]);
 
 	return (
 		<div className={styles.filter}>
@@ -71,28 +103,28 @@ const Filters = () => {
 				items={brands}
 				values={brands}
 				vertical={true}
-				/>
+			/>
 			<Checkboxes
-				name={'customer ratings'}
+				name={'rating'}
 				onClick={onClickHandler}
 				items={customerRatings}
 				values={customerRatingsValues}
 				vertical={true}
-				/>
+			/>
 			<Checkboxes
 				name={'price'}
 				onClick={onClickHandler}
 				items={prices}
 				values={pricesValues}
 				vertical={true}
-				/>
+			/>
 			<Checkboxes
 				name={'color'}
 				onClick={onClickHandler}
 				items={colors}
 				values={colors}
 				vertical={true}
-				/>
+			/>
 		</div>
 	);
 };

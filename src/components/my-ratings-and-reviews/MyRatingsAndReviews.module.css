@@ -4,3 +4,12 @@
   box-shadow: 0rem 0rem 1rem rgb(190, 190, 190);
   padding: 1rem;
 }
+
+.Message{
+ position: absolute;
+ text-align: center;
+ color: #ccc;
+ top: 50%;
+ left: 50%;
+ transform:translate(-50%, -50%);
+}

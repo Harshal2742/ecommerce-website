@@ -16,11 +16,11 @@ const HorizontalScrollingBox = (props) => {
 		scrollLeft = box.scrollLeft;
 	};
 
-	const onMouseLeaveHandler = (event) => {
+	const onMouseLeaveHandler = () => {
 		isDown = false;
 	};
 
-	const onMouseUpHandler = (event) => {
+	const onMouseUpHandler = () => {
 		isDown = false;
 	};
 

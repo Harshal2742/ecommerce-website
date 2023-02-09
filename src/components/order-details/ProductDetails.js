@@ -9,7 +9,7 @@ const ProductDetails = (props) => {
 				<img
 					className={styles.Product__Image}
 					src={`${process.env.PUBLIC_URL}/img/products/${props.order.product.image}.jpg`}
-					alt={props.order.product.name}
+					alt={props.order.product.title}
 				/>
 			</div>
 			<div className={styles.Product__Details}>
@@ -17,7 +17,7 @@ const ProductDetails = (props) => {
 					{props.order.product.brand}
 				</p>
 				<p className={styles.Product__Details_Name}>
-					{props.order.product.name}
+					{props.order.product.title}
 				</p>
 				<p className={styles.Product__Details_Price}>
 					<FontAwesomeIcon icon={faIndianRupee} />

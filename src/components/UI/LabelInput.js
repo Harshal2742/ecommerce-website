@@ -14,6 +14,7 @@ const LabelInput = (props) => {
 				className={styles.Input}
 				type={props.inputType}
 				id={inputId}
+				name={props.name || undefined}
 				defaultValue={props.defaultValue ? props.defaultValue : undefined}
 				disabled={props.inputDisabled ? props.inputDisabled : false}
 				onWheel={props.onWheelHandler ? props.onWheelHandler : undefined}

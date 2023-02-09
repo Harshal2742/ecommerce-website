@@ -1,7 +1,7 @@
 import styles from './Main.module.css';
 import { Fragment } from 'react';
 import { useSelector } from 'react-redux';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 
 import Navbar from '../components/layout/Navbar';
 import Home from '../components/home/Home';
@@ -42,7 +42,7 @@ const Main = () => {
 					{isLoggedIn && (
 						<Route path="/my-orders/:orderId" element={<OrderDetails />} />
 					)}
-					<Route path="/*" element={<p>Page not found.</p>} />
+					<Route path="/*" element={<p>Page not found</p>} />
 				</Routes>
 			</main>
 			<Footer />

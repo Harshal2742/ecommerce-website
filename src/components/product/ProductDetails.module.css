@@ -1,3 +1,10 @@
+.Container{
+  /* border: 2px solid red; */
+  min-height: 35rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 
 .Details__Company{
   color: rgb(141, 141, 141);
@@ -10,10 +17,9 @@
   font-weight: bold;
 }
 
-.Details__PriceIconWrapper{
+.Details__Price{
   font-size: 1.4rem;
   font-weight: bold;
-  margin: 2rem 0rem;
   color: rgb(69, 69, 69);
 }
 
@@ -39,14 +45,11 @@
   font-weight: 700;
 }
 
-.Colors{
-  margin: 1rem 0rem;
-}
 
-.Colors h4{
+.Selection h4{
   color: rgb(95, 95, 95);
   font-weight: bold;
-}
+} 
 
 .RadioButtonWrapper > input{
   display: none;
@@ -63,7 +66,6 @@
   margin-right: 1rem;
   width: 4rem;
   text-align: center;
-  border-radius: 1rem;
 }
 
 .RadioButtonWrapper > label:hover{
@@ -77,23 +79,6 @@
   background-color: black;
 }
 
-.Sizes{
-  margin: 1rem 0rem;
-}
-
-.Sizes h4{
-  color: rgb(95, 95, 95);
-  font-weight: bold;
-} 
-
-.Sizes .RadioButtonWrapper label{
-  border-radius: 0rem;
-}
-
-.Product__Description{
-  height: 5rem;
-}
-
 .Product__Description h4{
   color: rgb(95, 95, 95);
   margin: 0.5rem 0rem;
@@ -101,7 +86,6 @@
 
 .Product__Description_Text{
   text-align:justify ;
-  height: 8rem;
   overflow: auto;
 }
 
@@ -126,7 +110,6 @@
   height: 40px;
   background: #252525;
   color: white;
-  margin: 1.5rem 0rem;
 }
 
 .Button:hover{

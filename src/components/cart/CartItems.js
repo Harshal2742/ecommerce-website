@@ -8,7 +8,7 @@ const CartItems = (props) => {
   return (
     <div className={styles.items}>
       {items.map((item) => (
-        <CartItem item={item} key={item.id} />
+        <CartItem item={item} key={item._id} />
       ))}
     </div>
   );

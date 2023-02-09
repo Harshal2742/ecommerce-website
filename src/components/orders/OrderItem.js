@@ -24,7 +24,7 @@ const OrderItem = (props) => {
 				/>
 			</div>
 			<div className={`${styles.Item__element} ${styles.Item__Title}`}>
-				<p>{props.order.product.name}</p>
+				<p>{props.order.product.title}</p>
 			</div>
 			<div className={styles.Item__element}>
 				<p>

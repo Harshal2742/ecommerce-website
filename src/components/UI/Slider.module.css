@@ -1,0 +1,23 @@
+.Container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Slides{
+  position: relative;
+  display: flex;
+}
+
+.Slide{
+  display:none;
+}
+
+.Slide_Active{
+  display: block;
+}
+
+.ButtonContainer{
+  display: flex;
+  justify-content: center;
+}

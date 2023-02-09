@@ -23,13 +23,15 @@
     color: rgb(141, 141, 141);
 }
 
-.Item__Name{
+.Item__Title{
+    font-size: 0.9rem;
     font-weight: 600;
     height: 3rem;
     max-width: 13rem;
 }
 
 .Item__PriceCartWrapper{
+    margin-top: 0.5rem;
     display: flex;
     justify-content: space-between;
 }

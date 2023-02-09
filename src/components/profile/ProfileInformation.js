@@ -1,34 +1,34 @@
 import { useRef, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+
+import styles from './ProfileInformation.module.css';
 import Button from '../UI/Button';
 import LabelInput from '../UI/LabelInput';
-import styles from './ProfileInformation.module.css';
+import { sendUserData } from '../../store/httpRequests';
 
 const ProfileInformation = () => {
+	const dispatch = useDispatch();
 	const firstNameInputRef = useRef();
 	const lastNameInputRef = useRef();
 	const emailInputRef = useRef();
 	const phoneInputRef = useRef();
 	const birthInputRef = useRef();
 	const [isInputDisabled, setIsInputDisabled] = useState(true);
-	const user = {
-		firstName: 'Harshal',
-		lastName: 'Takade',
-		email: 'harshaltakade1234@gmail.com',
-		dateOfBirth: '2002-04-27',
-		phone: '8412836171',
-	};
+	const [buttonText, setButtonText] = useState('Edit');
+	const userData = useSelector((state) => state.user.userData);
 
-	user.fullName = user.firstName + ' ' + user.lastName;
-
-	const editSaveHandler = (event) => {
+	const onSubmitHandler = (event) => {
 		event.preventDefault();
 
-		if (event.target.textContent === 'Edit') {
-			event.target.textContent = 'Save';
+		if (buttonText === 'Edit') {
+			setButtonText('Save');
 			setIsInputDisabled(false);
 		} else {
-			// send http patch request
-			event.target.textContent = 'Edit';
+			const form = document.getElementById('form');
+			const formData = new FormData(form);
+
+			dispatch(sendUserData(formData));
+			setButtonText('Edit');
 			setIsInputDisabled(true);
 		}
 	};
@@ -38,20 +38,25 @@ const ProfileInformation = () => {
 	};
 
 	return (
-		<form className={styles.ProfileInformation}>
+		<form
+			id="form"
+			className={styles.ProfileInformation}
+			onSubmit={onSubmitHandler}
+		>
 			<div className={styles.ProfileInformation__ButtonDiv}>
-				<Button clickHandler={editSaveHandler}>Edit</Button>
+				<Button type={'submit'}>{buttonText}</Button>
 			</div>
 			<div>
 				<img
 					className={styles.ProfileInformation__UserImage}
-					src={process.env.PUBLIC_URL + '/img/users/default.jpg'}
-					alt={user.fullName}
+					src={`${process.env.REACT_APP_API_USER_IMG}/${userData.photo}`}
+					alt={userData.firstName}
 				/>
 
 				<input
 					className={styles.UserImage__Input}
 					type="file"
+					name="photo"
 					id="user-image"
 					disabled={isInputDisabled}
 				/>
@@ -64,38 +69,47 @@ const ProfileInformation = () => {
 					label={'First Name'}
 					inputRef={firstNameInputRef}
 					inputType={'text'}
-					defaultValue={user.firstName}
+					defaultValue={userData.firstName}
 					inputDisabled={isInputDisabled}
+					required={true}
+					name={'firstName'}
 				/>
 				<LabelInput
 					label={'Last Name'}
 					inputRef={lastNameInputRef}
 					inputType={'text'}
-					defaultValue={user.lastName}
+					defaultValue={userData.lastName}
 					inputDisabled={isInputDisabled}
+					required={true}
+					name={'lastName'}
 				/>
 			</div>
 			<LabelInput
 				label={'E-mail'}
 				inputRef={emailInputRef}
 				inputType={'email'}
-				defaultValue={user.email}
+				defaultValue={userData.email}
 				inputDisabled={isInputDisabled}
+				required={true}
+				name={'email'}
 			/>
 			<LabelInput
 				label={'Date of Birth'}
 				inputRef={birthInputRef}
 				inputType={'date'}
-				defaultValue={user.dateOfBirth}
+				defaultValue={userData.dateOfBirth ? userData.dateOfBirth.split('T')[0] : null}
 				inputDisabled={isInputDisabled}
+				name={'dateOfBirth'}
 			/>
 			<LabelInput
 				label={'Phone'}
 				inputRef={phoneInputRef}
 				inputType={'number'}
-				defaultValue={user.phone}
+				defaultValue={userData.phone}
 				inputDisabled={isInputDisabled}
 				onWheelHandler={onWheelHandler}
+				required={true}
+				name={'phone'}
 			/>
 		</form>
 	);

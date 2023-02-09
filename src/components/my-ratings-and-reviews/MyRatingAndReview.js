@@ -3,22 +3,46 @@ import { faStar as filledStar } from '@fortawesome/free-solid-svg-icons';
 import { faStar as emptyStar } from '@fortawesome/free-regular-svg-icons';
 import { useNavigate } from 'react-router-dom';
 import FormateDate from '../../utils/FormateDate';
+import { useDispatch } from 'react-redux';
 
 import styles from './MyRatingAndReview.module.css';
 import Button from '../UI/Button';
+import useHttp from '../../hooks/useHttp';
+import { notificationAction } from '../../store/notification-slice';
 
 const MyRatingAndReview = (props) => {
 	const star = [1, 2, 3, 4, 5];
-	const productInfo = props.review.product;
+	const { product } = props.review;
 	const navigate = useNavigate();
+	const { sendRequest, isError } = useHttp();
+	const dispatch = useDispatch();
 
-	props.review.date = FormateDate(props.review.date);
+	let createdAt = props.review.createdAt.split('T')[0];
+	createdAt = FormateDate(new Date(createdAt));
 
 	const onEditHandler = () => {
-		navigate(`/home/my-ratings-and-reviews/${props.review.id}`);
+		navigate(`/home/my-ratings-and-reviews/${props.review._id}`);
 	};
 
-	const onDeleteHandler = () => {};
+	const onDeleteHandler = async () => {
+		const dataTransformer = (response) => {};
+
+		const url = `${process.env.REACT_APP_API_URL}/reviews/my-reviews/${props.review._id}`;
+		const headers = {
+			Authorization: `Bearer ${localStorage.getItem('token')}`,
+		};
+
+		await sendRequest({ url, headers, method: 'DELETE' }, dataTransformer);
+		dispatch(
+			notificationAction.showNotification({
+				type: 'Success',
+				message: 'Review deleted successfully',
+			})
+		);
+		if (!isError) {
+			props.onDelete();
+		}
+	};
 
 	return (
 		<div className={styles.Wrapper}>
@@ -26,13 +50,13 @@ const MyRatingAndReview = (props) => {
 				<div className={styles.Product}>
 					<img
 						className={styles.Product__Image}
-						src={`${process.env.PUBLIC_URL}/img/products/${productInfo.image}.jpg`}
-						alt={'product'}
+						src={`${process.env.REACT_APP_API_PRODUCT_IMG}/${product.image}`}
+						alt={product.title}
 					/>
 				</div>
 				<div className={styles.Review__Detail}>
 					<div className={styles.Product__Name}>
-						<h4>{productInfo.summary}</h4>
+						<h4>{product.title}</h4>
 					</div>
 					<div>
 						<p>
@@ -60,7 +84,7 @@ const MyRatingAndReview = (props) => {
 						)}
 					</div>
 					<div>
-						<p>Posted on {props.review.date}</p>
+						<p>Posted on {createdAt}</p>
 					</div>
 				</div>
 			</div>

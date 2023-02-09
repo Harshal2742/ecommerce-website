@@ -1,0 +1,39 @@
+.Container{
+  position: fixed;
+  background: linear-gradient(to right,rgb(240, 205, 205),rgb(250, 235, 235),rgb(240, 205, 205));
+  box-shadow: 0 0 0.3rem #8f8a8a;
+  width: 40%;
+  z-index: 100;
+  left: 50%;
+  transform: translateX(-50%);
+  min-height: 2rem;
+  border-radius: 0.3rem;
+  animation: show 3s linear infinite forwards;
+}
+
+
+.Message{
+  text-align: justify;
+  margin: 0.3rem 1rem;
+}
+
+.Message__Error{
+  color: red;
+}
+
+.Message__Success{
+  color: green;
+}
+.Message__Icon{
+  font-size: 0.8rem;
+  margin-right: 0.4rem;
+  line-height: 1rem;
+}
+
+@keyframes show{
+  0% {top:-5rem;}
+  25% {top:2rem;}
+  50% {top:2rem;}
+  75% {top:2rem;}
+  100% {top:-5rem;}
+}

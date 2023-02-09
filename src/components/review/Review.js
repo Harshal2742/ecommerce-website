@@ -6,42 +6,39 @@ import Button from '../UI/Button';
 
 import styles from './Review.module.css';
 import { useEffect, useState } from 'react';
-
-const review = {
-	id: 'r2',
-	rating: 5,
-	review: ` Wow nice shirt at this price...i am satisfied with this shirt..if you're 20+ age then you have to go with M size... perfect size and length..just worth it. Wow nice shirt at this price...i am satisfied with this shirt..if you're 20+ age then you have to go with M size... perfect size and length..just worth it. Wow nice shirt at this price...i am satisfied with this shirt..if you're 20+ age then you have to go with M size... perfect size and length..just worth it.
-  Wow nice shirt at this price...i am satisfied with this shirt..if you're 20+ age then you have to go with M size... perfect size and length..just worth it. Wow nice shirt at this price...i am satisfied with this shirt..if you're 20+ age then you have to go with M size... perfect size and length..just worth it. Wow nice shirt at this price...i am satisfied with this shirt..if you're 20+ age then you have to go with M size... perfect size and length..just worth it.`,
-	date: new Date(),
-	product: {
-		id: 'p1',
-		image: 'p1',
-		category: 'Casual Shirt',
-		availableSizes: ['L', 'XL', 'XXL'],
-		availableColor: ['red', 'black', 'green'],
-		name: 'Men Slim Fit Checkered Spread Collar Casual Shirt',
-	},
-};
-let product = review.product;
+import useHttp from '../../hooks/useHttp';
+import { notificationAction } from '../../store/notification-slice';
+import { useDispatch } from 'react-redux';
 
 const Review = () => {
 	const { reviewId } = useParams();
-
+	const { sendRequest, isError } = useHttp();
+	const [product, setProduct] = useState(null);
 	const [queryParams] = useSearchParams();
-
 	const [starCount, setStarCount] = useState(0);
 	const [reviewText, setReviewText] = useState('');
+	const dispatch = useDispatch();
+
+	const dataTransformer = (response) => {
+		const review = response.data.review;
+		setStarCount(review.rating);
+		setReviewText(review.review);
+		setProduct(review.product);
+	};
 
 	useEffect(() => {
 		if (reviewId) {
-			setStarCount(review.rating);
-			setReviewText(review.review);
+			const url = `${process.env.REACT_APP_API_URL}/reviews/my-reviews/${reviewId}`;
+			const headers = {
+				Authorization: `Bearer ${localStorage.getItem('token')}`,
+			};
+			sendRequest({ url, headers }, dataTransformer);
 		} else {
 			console.log('new review');
 			console.log(queryParams.get('productId'));
 			console.log(queryParams.get('orderId'));
 		}
-	}, [reviewId, queryParams]);
+	}, [reviewId, queryParams, sendRequest]);
 
 	const star = [1, 2, 3, 4, 5];
 	const navigate = useNavigate();
@@ -50,13 +47,31 @@ const Review = () => {
 		setStarCount(+event.currentTarget.dataset.count);
 	};
 
-	const formSubmitHander = (event) => {
+	const formSubmitHander = async (event) => {
 		event.preventDefault();
 
-		// send http request
-		console.log(reviewText);
-		console.log(starCount);
-		navigate(-1);
+		const url = `${process.env.REACT_APP_API_URL}/reviews/my-reviews/${reviewId}`;
+		const headers = {
+			'Content-Type': 'application/json',
+			Authorization: `Bearer ${localStorage.getItem('token')}`,
+		};
+
+		const body = {
+			rating: starCount,
+			review: reviewText,
+		};
+
+		await sendRequest({ url, headers, method: 'PATCH', body }, dataTransformer);
+
+		if (!isError) {
+			dispatch(
+				notificationAction.showNotification({
+					type: 'Success',
+					message: 'Review updated successfully',
+				})
+			);
+			navigate(-1);
+		}
 	};
 
 	const rating = (
@@ -81,6 +96,10 @@ const Review = () => {
 		</p>
 	);
 
+	if (!product) {
+		return <></>;
+	}
+
 	return (
 		<section className={styles.Container}>
 			<div>
@@ -90,12 +109,12 @@ const Review = () => {
 				<div>
 					<img
 						className={styles.Product__Image}
-						src={`${process.env.PUBLIC_URL}/img/products/${product.image}.jpg`}
-						alt={product.name}
+						src={`${process.env.PUBLIC_URL}/img/products/${product.image}`}
+						alt={product.title}
 					/>
 				</div>
 				<div>
-					<p className={styles.Product__Title}>{product.name}</p>
+					<p className={styles.Product__Title}>{product.title}</p>
 				</div>
 			</div>
 			<div>
@@ -112,7 +131,7 @@ const Review = () => {
 						></textarea>
 					</div>
 					<div className={styles.ButtonWrapper}>
-						<Button>Submit</Button>
+						<Button type="submit">Submit</Button>
 					</div>
 				</form>
 			</div>
