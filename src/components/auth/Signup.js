@@ -68,7 +68,7 @@ const Signup = () => {
 		dispatch(uiActions.toggleSpinner());
 		try {
 			const response = await fetch(
-				'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBne6wJXtYbV2Gu_7VQ50Ld9srqHEscNJU',
+				'url',
 				{
 					method: 'POST',
 					body: JSON.stringify({
