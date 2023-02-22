@@ -1,23 +1,33 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faIndianRupee } from '@fortawesome/free-solid-svg-icons';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import styles from './PriceDetails.module.css';
 import { useNavigate } from 'react-router-dom';
+import { notificationAction } from '../../store/notification-slice';
+import { uiActions } from '../../store/uiAction-slice';
 
 const PriceDetails = () => {
+	const navigate = useNavigate();
+	const dispatch = useDispatch();
+
 	const totalAmount = useSelector((state) => state.cart.totalAmount);
 	const totalDiscount = useSelector((state) => state.cart.totalDiscount);
-	// const totalQuantity = useSelector((state) => state.cart.totalQuantity)
 	const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
-	const navigate = useNavigate();
 
 	const orderPlaceHander = () => {
 		if (!isLoggedIn) {
-			// alert('Please login to place order!');
+			dispatch(
+				notificationAction.showNotification({
+					type: 'Message',
+					message: 'Please login to place order.',
+				})
+			);
 			navigate('/login');
 			return;
+		} else {
+			dispatch(uiActions.toggleShowCart());
+			navigate('/home/delivery-address');
 		}
-		alert('Order placed successfully.');
 	};
 
 	return (

@@ -1,106 +1,89 @@
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { FaOpencart } from 'react-icons/fa';
 
 import styles from './Signup.module.css';
 import { userActions } from '../../store/user-slice';
-import { uiActions } from '../../store/uiAction-slice';
 import Button from '../UI/Button';
+import { notificationAction } from '../../store/notification-slice';
+import useHttp from '../../hooks/useHttp';
+import { fetchCartData } from '../../store/httpRequests';
 
 const Signup = () => {
-	const [message, setMessage] = useState('');
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
+	const { sendRequest, isError } = useHttp();
 
 	const onWheelHandler = (event) => {
 		event.target.blur();
 	};
 
+	const dataTransformer = (response) => {
+		const token = response.token;
+		const userData = response.data.user;
+		dispatch(userActions.loginHandler({ token, userData }));
+		dispatch(fetchCartData());
+		navigate('/', { replace: true });
+	};
+
 	const submitHandler = async (event) => {
 		event.preventDefault();
 
-		const enteredFname = event.target[0].value;
-		const enteredLname = event.target[1].value;
-		const enteredEmail = event.target[2].value;
-		// const enteredDOB = event.target[3].value;
-		const enteredMobileNo = event.target[4].value;
-		const password = event.target[5].value;
-		const confirmPassword = event.target[6].value;
+		const firstName = event.target[0].value.trim();
+		const lastName = event.target[1].value.trim();
+		const email = event.target[2].value.trim();
+		const phone = event.target[3].value.trim();
+		const password = event.target[4].value.trim();
+		const passwordConfirm = event.target[5].value.trim();
 
-		if (enteredFname.length === 0) {
-			setMessage('Please enter your first name!');
-			return;
-		} else if (!/^[A-Za-z]+$/.test(enteredFname)) {
-			setMessage('First must contian only contain letters!');
-			return;
-		}
-
-		if (enteredLname.length === 0) {
-			setMessage('Please enter your last name!');
-			return;
-		} else if (!/^[A-Za-z]+$/.test(enteredLname)) {
-			setMessage('Last must contian only contain letters!');
-			return;
-		}
-
-		if (enteredMobileNo.length !== 10) {
-			setMessage('Please enter valid phone number!');
-			return;
-		}
-
-		if (!enteredEmail.includes('@')) {
-			setMessage('Please enter valid email!');
-			return;
-		}
-
-		if (password.length < 8) {
-			setMessage('Password is too short!');
-			return;
-		} else if (password !== confirmPassword) {
-			setMessage('Confirmed password is not same. Please confirm again!');
-			return;
-		}
-
-		setMessage('');
-		event.target.reset();
-
-		dispatch(uiActions.toggleSpinner());
-		try {
-			const response = await fetch(
-				'url',
-				{
-					method: 'POST',
-					body: JSON.stringify({
-						email: enteredEmail,
-						password,
-						returnSecureToken: true,
-					}),
-					headers: {
-						'Content-Type': 'application/json',
-					},
-				}
+		if (!/^[A-Za-z]+$/.test(firstName)) {
+			dispatch(
+				notificationAction.showNotification({
+					type: 'Error',
+					message: 'First must contian only contain letters!',
+				})
 			);
-
-			if (!response.ok) {
-				const data = await response.json();
-				console.log(data);
-				throw new Error('Sign up failed! Please try later.');
-			}
-
-			const data = await response.json();
-
-			const idToken = data.idToken;
-			const expirationTime = new Date(
-				Date.now() + +data.expiresIn * 1000
-			).toString();
-			dispatch(userActions.loginHandler({ idToken, expirationTime }));
-			navigate('/');
-		} catch (err) {
-			alert(err.message);
+			return;
 		}
 
-		dispatch(uiActions.toggleSpinner());
+		if (!/^[A-Za-z]+$/.test(lastName)) {
+			dispatch(
+				notificationAction.showNotification({
+					type: 'Error',
+					message: 'Last must contian only contain letters!',
+				})
+			);
+			return;
+		}
+
+		if (password !== passwordConfirm) {
+			dispatch(
+				notificationAction.showNotification({
+					type: 'Error',
+					message: 'Confirmed password is not same. Please confirm again!',
+				})
+			);
+			return;
+		}
+
+		const body = {
+			firstName,
+			lastName,
+			email,
+			phone,
+			password,
+			passwordConfirm,
+		};
+		const url = `${process.env.REACT_APP_API_URL}/users/signup`;
+
+		const headers = {
+			'Content-Type': 'application/json',
+		};
+
+		await sendRequest({ method: 'POST', url, headers, body },dataTransformer);
+		if(!isError){
+			event.target.reset();
+		}
 	};
 
 	return (
@@ -112,40 +95,41 @@ const Signup = () => {
 				<div>
 					<h2>Sign Up</h2>
 				</div>
-				<div className={styles.message}>
-					<p>{message}</p>
-				</div>
-				<form className={styles.Form} onSubmit={submitHandler}>
+				<form className={styles.Form} id="signUpForm" onSubmit={submitHandler}>
 					<div>
-						<label htmlFor="fname">First name</label>
-						<input type="text" id="fname" required />
+						<label htmlFor="firstName">First name</label>
+						<input type="text" id="firstName" required />
 					</div>
 					<div>
-						<label htmlFor="lname">Last Name</label>
-						<input type="text" id="lname" required />
+						<label htmlFor="lastName">Last Name</label>
+						<input type="text" id="lastName" required />
 					</div>
 					<div>
-						<label htmlFor="name">E-mail</label>
-						<input type="email" id="name" required />
+						<label htmlFor="email">E-mail</label>
+						<input type="email" id="email" required />
 					</div>
 					<div>
-						<label htmlFor="mobile">Phone</label>
+						<label htmlFor="phone">Phone</label>
 						<input
-							type="number"
-							id="mobile"
+							type="tel"
+							id="phone"
 							required
-							onWheel={onWheelHandler}
 							maxLength="10"
 							minLength="10"
 						/>
 					</div>
 					<div>
 						<label htmlFor="password">Paaword</label>
-						<input type="password" id="password" required />
+						<input type="password" id="password" required minLength={8} />
 					</div>
 					<div>
-						<label htmlFor="confirmPassword">Confirm password</label>
-						<input type="password" id="confirmPassword" required />
+						<label htmlFor="passwordConfirm">Confirm password</label>
+						<input
+							type="password"
+							id="passwordConfirm"
+							required
+							minLength={8}
+						/>
 					</div>
 					<div>
 						<div className={styles.ButtonWrapper}>

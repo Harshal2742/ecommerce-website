@@ -5,6 +5,7 @@ const initialState = {
 	totalQuantity: 0,
 	totalDiscount: 0,
 	items: [],
+	id:-1
 };
 
 const cartSlice = createSlice({
@@ -12,6 +13,7 @@ const cartSlice = createSlice({
 	initialState,
 	reducers: {
 		setCartData(state, action) {
+			state.id = action.payload._id
 			state.items = action.payload.items;
 			state.totalAmount = action.payload.totalAmount;
 			state.totalDiscount = action.payload.totalDiscount;

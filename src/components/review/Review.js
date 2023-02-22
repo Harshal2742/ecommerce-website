@@ -109,7 +109,7 @@ const Review = () => {
 				<div>
 					<img
 						className={styles.Product__Image}
-						src={`${process.env.PUBLIC_URL}/img/products/${product.image}`}
+						src={`${process.env.REACT_APP_API_PRODUCT_IMG}/${product.image}`}
 						alt={product.title}
 					/>
 				</div>
@@ -118,7 +118,7 @@ const Review = () => {
 				</div>
 			</div>
 			<div>
-				<form onSubmit={formSubmitHander}>
+				<form className={styles.Form} onSubmit={formSubmitHander}>
 					<div className={styles.Rating}>
 						<h3>Rate this product</h3>
 						<div className={styles.Rating__Stars}>{rating}</div>

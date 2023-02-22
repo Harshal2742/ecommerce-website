@@ -20,6 +20,8 @@ const Menu = () => {
 	const navigate = useNavigate();
 	const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
 	const showMenu = useSelector((state) => state.uiAction.showMenu);
+	const user = useSelector((state) => state.user.userData);
+
 	let wrapperClasses = '';
 
 	if (showMenu && isLoggedIn) {
@@ -33,9 +35,9 @@ const Menu = () => {
 	};
 
 	const logoutHanler = () => {
+		dispatch(userActions.logoutHanler());
 		dispatch(uiActions.toggleShowMenu());
 		dispatch(cartActions.clearCartData());
-		dispatch(userActions.logoutHanler());
 		navigate('/');
 	};
 	return (
@@ -45,12 +47,15 @@ const Menu = () => {
 			</button>
 			<div>
 				<div className={styles.profileImg}>
-					<img
-						src={`${process.env.PUBLIC_URL}/img/users/default.jpg`}
-						alt="my profile"
-					/>
-
-					<p>Raj Patil</p>
+					{user !== null && (
+						<>
+							<img
+								src={`${process.env.REACT_APP_API_USER_IMG}/${user.photo}`}
+								alt="my profile"
+							/>
+							<p>{`${user.firstName} ${user.lastName}`}</p>
+						</>
+					)}
 				</div>
 				<ul className={styles.menu}>
 					<li>
@@ -65,7 +70,7 @@ const Menu = () => {
 					</li>
 					<li>
 						<Link
-							to="/my-coupons"
+							to="/home/my-coupons"
 							className={styles.menu__link}
 							onClick={menuCloseHandler}
 						>

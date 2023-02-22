@@ -7,20 +7,32 @@ import FormateDate from '../../utils/FormateDate';
 const OrderItem = (props) => {
 	const naviage = useNavigate();
 	
-	props.order.deliveryDate = FormateDate(props.order.deliveryDate);
+	// temporay
+	// props.order.deliveryDate = props.order.orderDate;
+	let date = FormateDate(new Date(props.order.orderDate.split('T')[0]));
+
+	let message;
+	if(props.order.orderStatus === 'On the way'){
+		message = 'Delivery expected on'
+	}else if(props.order.orderStatus === 'delivered'){
+		message = "Delivered on"
+	}else if(props.order.orderStatus === 'cancelled'){
+		message = "Order cancelled on"
+	}
+	
 
 	return (
 		<div
 			className={styles.Item}
 			onClick={() => {
-				naviage(`/home/my-orders/${props.order.id}`);
+				naviage(`/home/my-orders/${props.order._id}`);
 			}}
 		>
 			<div>
 				<img
 					className={styles.Item__Image}
-					src={process.env.PUBLIC_URL + '/img/products/p1.jpg'}
-					alt={props.order.name}
+					src={`${process.env.REACT_APP_API_PRODUCT_IMG}/${props.order.product.image}`}
+					alt={props.order.product.title}
 				/>
 			</div>
 			<div className={`${styles.Item__element} ${styles.Item__Title}`}>
@@ -28,23 +40,21 @@ const OrderItem = (props) => {
 			</div>
 			<div className={styles.Item__element}>
 				<p>
-					<FontAwesomeIcon icon={faIndianRupee}></FontAwesomeIcon>
-					{props.order.product.price * props.order.selectedQuantity}
+					<FontAwesomeIcon icon={faIndianRupee}/>
+					{props.order.totalAmount}
 				</p>
 			</div>
 			<div className={styles.Item__element}>
-				<p>
+				<p className={styles.Subtitle}>
 					<span>status</span>
 				</p>
 				<p>{props.order.orderStatus}</p>
 			</div>
 			<div className={`${styles.Item__element} ${styles.Item__Date}`}>
 				<p>
-					{props.order.deliveryDate > Date.now()
-						? 'Delivery expected on '
-						: 'Delivered on '}
+					{message}
 				</p>
-				<p>{props.order.deliveryDate}</p>
+				<p>{date}</p>
 			</div>
 		</div>
 	);

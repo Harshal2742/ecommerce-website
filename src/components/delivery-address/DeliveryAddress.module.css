@@ -1,0 +1,22 @@
+.Container{
+  max-height: 70vh;
+  box-shadow: 0rem 0rem 1rem rgb(190, 190, 190);
+  padding: 1rem;
+}
+
+.OuterWrapper{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  column-gap: 1rem;
+}
+
+.buttonStyle{
+  width: 100%;
+  border-radius: 0rem;
+  height: 2.5rem;
+}
+
+.AddressForm > * {
+  margin: 1rem;
+}

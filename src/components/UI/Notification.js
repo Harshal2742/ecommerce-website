@@ -16,18 +16,24 @@ const Notification = () => {
 	}, [dispatch]);
 
 	let messageClasses = styles.Message;
-
+	let icon = null;
 	if (type === 'Error') {
+		icon = <FaExclamationCircle />
 		messageClasses = `${styles.Message} ${styles.Message__Error}`;
 	} else if (type === 'Success') {
+		icon = <FaCheckCircle />
 		messageClasses = `${styles.Message} ${styles.Message__Success}`;
+	}else{
+		messageClasses = `${styles.Message}`
 	}
+
+
 
 	return (
 		<div className={styles.Container}>
 			<div className={messageClasses}>
 				<span className={styles.Message__Icon}>
-					{type === 'Success' ? <FaCheckCircle /> : <FaExclamationCircle />}
+					{icon}
 				</span>
 				{message}
 			</div>

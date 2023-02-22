@@ -1,7 +1,7 @@
 import styles from './Main.module.css';
 import { Fragment } from 'react';
 import { useSelector } from 'react-redux';
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
 import Navbar from '../components/layout/Navbar';
 import Home from '../components/home/Home';
@@ -13,6 +13,8 @@ import MyRatingsAndReviews from '../components/my-ratings-and-reviews/MyRatingsA
 import Review from '../components/review/Review';
 import OrderDetails from '../components/order-details/OrderDetails';
 import Footer from '../components/layout/Footer';
+import DeliveryAddress from '../components/delivery-address/DeliveryAddress';
+import Coupon from '../components/coupon/Coupon';
 
 const Main = () => {
 	const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
@@ -26,6 +28,7 @@ const Main = () => {
 					<Route path="/products/:productId" element={<Product />} />
 					{isLoggedIn && <Route path="/my-profile" element={<Profile />} />}
 					{isLoggedIn && <Route path="/my-orders" element={<MyOrders />} />}
+					{isLoggedIn && <Route path="/my-coupons" element={<Coupon />} />}
 					{isLoggedIn && (
 						<Route
 							path="/my-ratings-and-reviews"
@@ -41,7 +44,8 @@ const Main = () => {
 					{isLoggedIn && <Route path="/write-review" element={<Review />} />}
 					{isLoggedIn && (
 						<Route path="/my-orders/:orderId" element={<OrderDetails />} />
-					)}
+						)}
+					{isLoggedIn && <Route path="/delivery-address" element={<DeliveryAddress />} />}
 					<Route path="/*" element={<p>Page not found</p>} />
 				</Routes>
 			</main>

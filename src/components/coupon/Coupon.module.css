@@ -1,15 +1,10 @@
-.MyOrders{
+.Container{
   min-height: 85vh;
   box-shadow: 0rem 0rem 1rem rgb(190, 190, 190);
   padding: 1rem;
-  position: relative;
 }
 
-.MyOrders__Filters{
-  margin: 1rem 0rem;
-}
-
-.NoOrders{
+.Message{
   color: #ccc;
   position: absolute;
   top: 50%;

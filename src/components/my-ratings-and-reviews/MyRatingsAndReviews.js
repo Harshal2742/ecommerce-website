@@ -30,7 +30,7 @@ const MyRatingsAndReviews = () => {
 			<h2>My Rating & Review</h2>
 			{reviews.length === 0 ? (
 				<h1 className={styles.Message}>
-					{"You don't have any ratings and reviews."}
+					{"No ratings and reviews."}
 				</h1>
 			) : (
 				<div>

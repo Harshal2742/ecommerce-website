@@ -2,17 +2,18 @@ import styles from './OrderStatus.module.css';
 import FormateDate from '../../utils/FormateDate';
 
 const OrderStatus = (props) => {
-	const orderDate = FormateDate(props.orderDate);
-	const deliveryDate = FormateDate(props.deliveryDate);
+	const orderDate = FormateDate(new Date(props.orderDate.split('T')[0]));
+
+
+	const date = FormateDate(new Date());
 
 	let message;
-
-	if (props.isCancelled && props.cancelledDate) {
-		message = 'Order cancelled on ';
-	} else if (!props.isDelivered) {
+	if (props.orderStatus === 'On the way') {
 		message = 'Delivery expected on ';
-	} else {
+	} else if (props.orderStatus === 'delivered') {
 		message = 'Delivered on ';
+	} else if (props.orderStatus === 'cancelled') {
+		message = 'Order cancelled on ';
 	}
 
 	return (
@@ -23,7 +24,7 @@ const OrderStatus = (props) => {
 				<p>Order placed on {orderDate}</p>
 				<p>
 					{message}
-					{deliveryDate}
+					{date}
 				</p>
 			</div>
 		</div>

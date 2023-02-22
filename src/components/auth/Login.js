@@ -72,7 +72,7 @@ const Login = () => {
 				<FaOpencart /> SHOPNOW
 			</h1>
 			<div className={styles.Card}>
-				<h2>Sign In</h2>
+				<h2>Login</h2>
 				<p className={styles.Message}></p>
 				<form className={styles.Form} onSubmit={submitHandler}>
 					<div className={styles.field}>

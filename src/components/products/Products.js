@@ -8,10 +8,10 @@ import { useLocation } from 'react-router-dom';
 const Products = () => {
 	const { search } = useLocation();
 	const { sendRequest, isError } = useHttp();
-
+	
 	const [products, setProducts] = useState([]);
 	const [productsCount, setProductsCount] = useState(0);
-
+	
 	useEffect(() => {
 		const dataTransformer = (response) => {
 			setProducts(response.data.doc);
@@ -19,6 +19,7 @@ const Products = () => {
 		};
 
 		const url = `${process.env.REACT_APP_API_URL}/products${search}`;
+
 
 		sendRequest({ url }, dataTransformer);
 	}, [search, sendRequest, setProducts, setProductsCount]);

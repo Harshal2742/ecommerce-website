@@ -15,12 +15,16 @@
 .Section2__Element{
   position: relative;
   cursor: pointer;
-  height: 20rem;
+  height: 22rem;
+  transition: all 0.3s ease-in-out;
+}
+.Section2__Element:hover{
+  transform: scale(1.05);
 }
 
 .Section2__Element > img{
   width: 16rem;
-  height: 22rem;
+  height: 100%;
   filter: brightness(90%);
 }
 

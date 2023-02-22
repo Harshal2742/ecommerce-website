@@ -6,15 +6,16 @@ import { useSearchParams } from 'react-router-dom';
 const Filters = () => {
 	const [filter, setFilter] = useState({});
 	const [searchParams, setSearchParams] = useSearchParams();
+	const [isInitial, setIsInitial] = useState(true);
 
 	const genders = ['men', 'women', 'kids'];
 	const sizes = ['XS', 'S', 'M', 'ML', 'L', 'XL', 'XXL'];
 	const brands = [
 		'ADIDAS',
 		'PUMA',
-		'NIKE',
-		'PETER ENGLAND',
-		'TOMMY HILFIGER',
+		'ROADSTER',
+		'KOOK N KEECH',
+		'HIGHLANDER',
 		'NAUTICA',
 	];
 	const customerRatings = ['4★ & above', '3★ & above'];
@@ -40,6 +41,7 @@ const Filters = () => {
 		const name = event.target.name;
 
 		const elements = document.getElementsByName(name);
+
 		const selectedValues = [];
 
 		elements.forEach((element) => {
@@ -63,24 +65,50 @@ const Filters = () => {
 		}
 	};
 
-	useEffect(() => {
-		let query = '';
-		for (let key in filter) {
-			query += `${key}:${filter[key]};`;
-		}
-		query = query.substring(0, query.length - 1);
-		setSearchParams((prevSearchParams) => {
-			if (prevSearchParams.has('flt')) {
-				prevSearchParams.delete('flt');
-			}
+	const setSelected = (name, values) => {
+		const elements = document.getElementsByName(name);
 
-			if (query.length > 0) {
-				prevSearchParams.set('flt', query);
+		elements.forEach((element) => {
+			if (values.includes(element.value)) {
+				element.checked = true;
 			}
-
-			return prevSearchParams;
 		});
-	}, [filter, setSearchParams]);
+	};
+
+	useEffect(() => {
+		if (!isInitial) {
+			let query = '';
+			for (let key in filter) {
+				query += `${key}:${filter[key]};`;
+			}
+			query = query.substring(0, query.length - 1);
+			setSearchParams((prevSearchParams) => {
+				if (prevSearchParams.has('flt')) {
+					prevSearchParams.delete('flt');
+				}
+
+				if (query.length > 0) {
+					prevSearchParams.set('flt', query);
+				}
+				return prevSearchParams;
+			});
+		} else {
+			const filter = searchParams.get('flt');
+			if (filter) {
+				const selectedFields = filter.split(';');
+				const filerObj = {};
+				selectedFields.forEach((field) => {
+					const [name, valuesStr] = field.split(':');
+					const values = valuesStr.split(',');
+					filerObj[name] = values;
+					setSelected(name, values);
+				});
+				setFilter({ ...filerObj });
+			}
+
+			setIsInitial(false);
+		}
+	}, [filter, setSearchParams, searchParams, isInitial]);
 
 	return (
 		<div className={styles.filter}>

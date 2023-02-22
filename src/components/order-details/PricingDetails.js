@@ -4,6 +4,9 @@ import { faIndianRupee } from '@fortawesome/free-solid-svg-icons';
 import styles from './PricingDetails.module.css';
 
 const PricingDetails = (props) => {
+
+
+
 	return (
 		<div className={styles.Pricing}>
 			<h3>Price Details</h3>
@@ -26,7 +29,7 @@ const PricingDetails = (props) => {
 					<span>Quantity</span>
 					<span className={styles.Pricing__Content_Amount}>
 						<FontAwesomeIcon icon={faIndianRupee} />
-						{props.order.selectedQuantity}
+						{props.order.quantity}
 					</span>
 				</p>
 				<p>

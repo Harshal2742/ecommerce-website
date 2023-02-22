@@ -1,8 +1,8 @@
 const FormateDate = (date) => {
 	date = date
 		.toLocaleString('en-IN', {
-			month: 'short',
 			day: '2-digit',
+			month: 'short',
 			year: 'numeric',
 		})
 		.replaceAll('-', ' ');

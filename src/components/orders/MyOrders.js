@@ -1,110 +1,45 @@
 import styles from './MyOrders.module.css';
 import FilterSort from './FilterSort';
 import OrderItem from './OrderItem';
-
-const orders = [
-	{
-		id: 'order-1',
-		product: {
-			id: 'p1',
-			image: 'p1',
-			title: 'Men Slim Fit Checkered Spread Collar Casual Shirt',
-			price: 400,
-		},
-		selectedSize: 'X',
-		selectedColor: 'red',
-		selectedQuantity: 4,
-		deliveryAddress: {
-			title: 'Raj Patil',
-			address: '502 Basti galli,Shedshal, Kolhapur District',
-			postalCode: '416105',
-			state: 'Maharashtra',
-			phoneNumber: ['1234567890', '0987654321'],
-		},
-		orderDate: new Date(),
-		orderStatus: 'Not yet delivered',
-		deliveryDate: new Date(),
-	},
-	{
-		id: 'order-2',
-		product: {
-			id: 'p1',
-			image: 'p1',
-			title: 'Spread Collar Casual Shirt',
-			price: 400,
-		},
-		selectedSize: 'X',
-		selectedColor: 'red',
-		selectedQuantity: 4,
-		deliveryAddress: {
-			title: 'Raj Patil',
-			address: '502 Basti galli,Shedshal, Kolhapur District',
-			postalCode: '416105',
-			state: 'Maharashtra',
-			phoneNumber: ['1234567890', '0987654321'],
-		},
-		orderDate: new Date(),
-		orderStatus: 'Not yet delivered',
-		deliveryDate: new Date(),
-	},
-	{
-		id: 'order-3',
-		product: {
-			id: 'p1',
-			image: 'p1',
-			title: 'Men Slim Fit Checkered Spread Collar Casual Shirt',
-			price: 400,
-		},
-		selectedSize: 'X',
-		selectedColor: 'red',
-		selectedQuantity: 4,
-		deliveryAddress: {
-			title: 'Raj Patil',
-			address: '502 Basti galli,Shedshal, Kolhapur District',
-			postalCode: '416105',
-			state: 'Maharashtra',
-			phoneNumber: ['1234567890', '0987654321'],
-		},
-		orderDate: new Date(),
-		orderStatus: 'Not yet delivered',
-		deliveryDate: new Date(),
-	},
-	{
-		id: 'order-4',
-		product: {
-			id: 'p1',
-			image: 'p1',
-			title: 'Men Slim Fit Checkered Spread Collar Casual Shirt',
-			price: 400,
-		},
-		selectedSize: 'X',
-		selectedColor: 'red',
-		selectedQuantity: 4,
-		deliveryAddress: {
-			title: 'Raj Patil',
-			address: '502 Basti galli,Shedshal, Kolhapur District',
-			postalCode: '416105',
-			state: 'Maharashtra',
-			phoneNumber: ['1234567890', '0987654321'],
-		},
-		orderDate: new Date(),
-		orderStatus: 'Not yet delivered',
-		deliveryDate: new Date(),
-	},
-];
+import useHttp from '../../hooks/useHttp';
+import { useEffect, useState } from 'react';
 
 const MyOrders = () => {
+	const { isError, sendRequest } = useHttp();
+	const [orders, setOrders] = useState([]);
+
+	useEffect(() => {
+		const dataTransformer = (response) => {
+			setOrders(response.data.orders);
+		};
+
+		const url = `${process.env.REACT_APP_API_URL}/orders/my-orders`;
+		const headers = {
+			Authorization: `Bearer ${localStorage.getItem('token')}`,
+		};
+
+		sendRequest({ url, headers }, dataTransformer);
+	}, [sendRequest]);
+
 	return (
 		<section className={styles.MyOrders}>
 			<h2>My Orders</h2>
-			<div className={styles.MyOrders__Filters}>
-				<FilterSort />
-			</div>
-			<div>
-				{orders.map((order, index) => {
-					return <OrderItem key={index} order={order} />;
-				})}
-			</div>
+			{orders.length === 0 ? (
+											<h1 className={styles.NoOrders}>
+											No orders yet.
+										</h1>
+			) : (
+				<>
+					<div className={styles.MyOrders__Filters}>
+						<FilterSort />
+					</div>
+					<div>
+						{orders.map((order, index) => {
+							return <OrderItem key={index} order={order} />;
+						})}
+					</div>
+				</>
+			)}
 		</section>
 	);
 };

@@ -29,3 +29,7 @@
 .Item__element > p{
   margin: 2%;
 }
+
+.Subtitle{
+  font-weight: bold;
+}

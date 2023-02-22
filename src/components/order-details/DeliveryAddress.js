@@ -1,25 +1,27 @@
 import styles from './DeliveryAddress.module.css';
 
 const DeliveryAddress = (props) => {
+
+	const {houseNumber,streetAddress,city,district,postalCode,state} = props.deliveryAddress;
 	return (
 		<div className={styles.Delivery}>
 			<h3>Delivery Address</h3>
 			<div>
 				<p>
-					<span>{props.deliveryAddress.name}</span>
+					<span>{`${props.deliveryAddress.firstName} ${props.deliveryAddress.lastName}`}</span>
 				</p>
 			</div>
 			<div>
-				<p>{props.deliveryAddress.address}</p>
-				<p>{`${props.deliveryAddress.postalCode},${props.deliveryAddress.state}`}</p>
+				<p>{`${houseNumber}, ${streetAddress}, ${city}, ${district} district`}</p>
+				<p>{`${postalCode}, ${state}`}</p>
 			</div>
 			<div>
 				<p>
 					<span>Phone Number</span>
 				</p>
 				<p>
-					{props.deliveryAddress.phoneNumber[0]},{' '}
-					{props.deliveryAddress.phoneNumber[1]}
+					{props.deliveryAddress.phoneNumber1},{' '}
+					{props.deliveryAddress.phoneNumber2}
 				</p>
 			</div>
 		</div>

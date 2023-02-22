@@ -23,4 +23,10 @@
 .Product__Image{
   width: 12rem;
   height: 17rem;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.Product__Image:hover{
+  border: 2px solid black;
 }

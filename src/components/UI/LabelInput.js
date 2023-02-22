@@ -4,8 +4,13 @@ import styles from './LabelInput.module.css';
 const LabelInput = (props) => {
 	const inputId = useId();
 
+	const width = props.width || '25rem';
+
 	return (
-		<div>
+		<div
+			className={`${styles.Container} ${props.wrapperStyle}`}
+			style={{ width: props.width || '25rem' }}
+		>
 			<label className={styles.Label} htmlFor={inputId}>
 				{props.label}
 			</label>
@@ -19,6 +24,8 @@ const LabelInput = (props) => {
 				disabled={props.inputDisabled ? props.inputDisabled : false}
 				onWheel={props.onWheelHandler ? props.onWheelHandler : undefined}
 				required={props.required || false}
+				pattern={props.pattern || undefined}
+				maxLength={props.maxLength || undefined}
 			/>
 		</div>
 	);

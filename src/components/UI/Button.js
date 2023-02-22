@@ -1,9 +1,13 @@
 import styles from './Button.module.css';
 
 const Button = (props) => {
+	const buttonClasses = props.style
+		? `${styles.Button} ${props.style}`
+		: `${styles.Button}`;
+		
 	return (
 		<button
-			className={styles.Button}
+			className={buttonClasses}
 			type={props.type || 'button'}
 			onClick={props.clickHandler || undefined}
 		>
