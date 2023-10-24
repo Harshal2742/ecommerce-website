@@ -58,24 +58,24 @@ const MainHeader = () => {
 					</NavLink>
 				</li>
 				<li>
-					{/* <NavLink
+					<NavLink
 						to="/home/blog"
 						className={({ isActive }) => {
 							return isActive ? styles.Tab_Active : styles.Tab__Inactive;
 						}}
 					>
 						Blog
-					</NavLink> */}
+					</NavLink>
 				</li>
 				<li>
-					{/* <NavLink
+					<NavLink
 						to="/home/about"
 						className={({ isActive }) => {
 							return isActive ? styles.Tab_Active : styles.Tab__Inactive;
 						}}
 					>
 						About
-					</NavLink> */}
+					</NavLink>
 				</li>
 			</ul>
 			<form className={styles.SearchbarContainer}>
